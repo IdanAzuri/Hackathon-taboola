@@ -21,7 +21,7 @@ function getUserHistory(){
 
 function handleUrls(urls) {
 	var urlsObj = {params:{userId: USER_ID , urls: urls}};
-	console.log(urlsObj);
+	//console.log(urlsObj);
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", HISTORY_UPDATE_URL);
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
