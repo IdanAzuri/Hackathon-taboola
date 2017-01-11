@@ -12,14 +12,20 @@ function getId(){
 
 getId();
 
+
+
 function renderRecs(recs) {
     var trHTML = '<tr><th colspan=2>You May Like</th></tr>';
     var jsonRecs = JSON.parse(recs);
     $.each(jsonRecs.items, function (i, item) {
-        trHTML += '<tr><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a href="' + item.url + '">' + item.url + '</a></td></tr>';
+        trHTML += '<tr><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a class="link" href="' + item.url + '">' + item.url + '</a></td></tr>';
     });
 
     $('#recList').append(trHTML);
+
+    $(".link").click(function () {
+        chrome.tabs.create({ url: "http://" + this.innerHTML });
+    });
 }
 
 window.onload = function() {
@@ -35,19 +41,6 @@ window.onload = function() {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
             console.log("response: " + xmlhttp.responseText);
             renderRecs(xmlhttp.response);
-        }
-
-        var hrefs = document.getElementsByTagName("a");
-
-        function openLink() {
-            var href = this.href;
-
-            chrome.tabs.create({url: "www.youtube.com"});
-
-        }
-
-        for (var i=0,a; a=hrefs[i]; ++i) {
-            hrefs[i].addEventListener('click', openLink);
         }
     };
     xmlhttp.send(JSON.stringify(postObj));
