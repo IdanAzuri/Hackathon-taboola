@@ -1,15 +1,15 @@
-SET @user_id='3cb83dad4235ec35e3695ff5213a134f9335499b9fb18e73e9a869a86630607a';
+SET @user_id='"8fb5f6e3-069d-4d57-aaca-742fc714de78"';
 -- FROM    (select * from user_history cross join (select category from category order by rand() limit 2) t ) tt
  -- use user_history_categories instead
 
-SELECT  *
+SELECT  recs_for_top_cat.*
 FROM    (
         SELECT  r.*
         FROM    recommendations r
                 INNER JOIN (
-                        SELECT  category,
+                        SELECT  tt.category,
                                 COUNT(*) AS num_views
-                        FROM    (select * from user_history cross join (select category from category order by rand() limit 2) t ) tt
+                        FROM    (select uh.category from user_history uh cross join (select category from category order by rand() limit 2) t ) tt
                         WHERE   user_id = @user_id
                         GROUP BY category
                         ORDER BY num_views DESC
