@@ -2,9 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-var HOMEPAGE = chrome.runtime.getManifest().homepage_url;
+HOMEPAGE = chrome.runtime.getManifest().homepage_url;
 var HISTORY_UPDATE_URL = HOMEPAGE + "hist/save";
-//var USER_ID = 0;
 var counter = 0;
 var MAX_ITEMS = 10;
 
@@ -31,7 +30,7 @@ function handleUrls(urls) {
 	
 	xmlhttp.send(JSON.stringify(urlsObj));
 }
-//getUserId();
+
 // Check whether new version is installed
 chrome.runtime.onInstalled.addListener(function(details){
 	getUserHistory();
