@@ -4,13 +4,18 @@
   "name": "Discovery Plugin",
   "description": "You May Like",
   "version": "1.0",
-
+  "icons": {
+    "128": "taboola.png"
+  },
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "taboola.png",
     "default_popup": "popup.html"
   },
   "permissions": [
     "tabs"
+  ],
+  "web_accessible_resources": [
+    "taboola.png"
   ],
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
 }
