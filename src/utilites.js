@@ -60,25 +60,30 @@ function getJSessionId() {
     }
     return jsId;
 }
-//createCookie("taboola_disc", "audero.it", new Date(new Date().getTime() + 10000));
+//createCookie("taboola_disc", "some value ", new Date(new Date().getTime() + 10000));
 
 function clickLink(a) {
     var url1 = a.getAttribute('value');
-    createCookie("taboola_disc", url1, new Date(new Date().getTime() + 10000));
+    createCookie("taboola_disco", url1, new Date(new Date().getTime() + 10000));
 }
 
 function getUserId() {
-    UserService
-    userService = UserServiceFactory.getUserService();
-    var user;
-    if (userService.isUserLoggedIn()) {
-        User
-        user = userService.getCurrentUser();
-        /* ...Do something with user.getFederatedIdentity(), which is the OpenID URL. */
-    } else {
-        user = readCookie(taboola_disc)
-    }
-    return user;
+
+    chrome.storage.sync.get('userid', function(items) {
+        var userid = items.userid;
+        if (userid) {
+            useToken(userid);
+        } else {
+            userid = getRandomToken();
+            chrome.storage.sync.set({userid: userid}, function() {
+                useToken(userid);
+                console.log("UserId=" + getUserId());
+            });
+        }
+        function useToken(userid) {
+            // TODO: Use user id for authentication or whatever you want.
+            console.log("UserId=" + getUserId());
+        }
+    });
 }
 
-console.log("UserId=" + getUserId());
