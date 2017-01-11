@@ -6,6 +6,7 @@ var HOMEPAGE = chrome.runtime.getManifest().homepage_url;
 var HISTORY_UPDATE_URL = HOMEPAGE + "hist/save";
 var USER_ID = 0;
 var counter = 0;
+var MAX_ITEMS = 10;
 
 function getRandomToken() {
     // E.g. 8 * 32 = 256 bits token
@@ -40,20 +41,35 @@ function getUserId() {
     });
 }
 
-getUserId();
+function getUserHistory(){
+	chrome.history.search({text: '', maxResults: MAX_ITEMS}, function(data) {
+	var items = [];
+    data.forEach(function(page) {
+        console.log("from history: "+ page.url);
+        items.push(page.url);
+    });
+    handleUrls(USER_ID ,items);
+});
+}
 
-function handleNewUrl(url) {
+function handleUrls(urls) {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", HISTORY_UPDATE_URL);
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
 	xmlhttp.onreadystatechange = function() {
 		console.log("response: " + xmlhttp.responseText)
 	};
-	xmlhttp.send(JSON.stringify({params:{userId: USER_ID , url:[url]}}));
+	var urlsObj = {params:{userId: USER_ID , urls: urls}};
+	xmlhttp.send(JSON.stringify(urlsObj));
 }
+
+getUserId();
+getUserHistory();
 
 chrome.history.onVisited.addListener(function(item) {
 	if(item.url){
-		handleNewUrl(item.url);
+		handleUrls([item.url]);
 	}
 });
+
+
