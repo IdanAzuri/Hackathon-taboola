@@ -2,7 +2,15 @@ var logger = require('../logger').logger
 var codes = require('../codes')
 
 function getItems() {
-    return {items: ['item 1', 'item 2', 'item 3']}
+    return {
+        items:[
+            ['youtube.com','taboola.png'],
+            ['netflix.com','taboola.png'],
+            ['imdb.com','taboola.png'],
+            ['wikia.com','taboola.png'],
+            ['deviantart.com','taboola.png']
+        ]
+    }
 }
 
 function route(server) {
