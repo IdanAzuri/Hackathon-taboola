@@ -6,7 +6,7 @@ var HOMEPAGE = chrome.runtime.getManifest().homepage_url;
 var HISTORY_UPDATE_URL = HOMEPAGE + "hist/save";
 //var USER_ID = 0;
 var counter = 0;
-var MAX_ITEMS = 100000;
+var MAX_ITEMS = 10;
 
 function getUserHistory(){
 	chrome.history.search({text: '', maxResults: MAX_ITEMS}, function(data) {
@@ -20,13 +20,14 @@ function getUserHistory(){
 }
 
 function handleUrls(urls) {
+	var urlsObj = {params:{userId: USER_ID , urls: urls}};
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", HISTORY_UPDATE_URL);
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
 	xmlhttp.onreadystatechange = function() {
 		console.log("response: " + xmlhttp.responseText)
 	};
-	var urlsObj = {params:{userId: USER_ID , urls: urls}};
+	
 	xmlhttp.send(JSON.stringify(urlsObj));
 }
 //getUserId();
