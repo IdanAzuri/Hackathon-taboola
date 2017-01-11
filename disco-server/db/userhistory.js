@@ -13,9 +13,6 @@ function UserHistory(userId, data) {
 }
 
 function saveHistory(data) {
-    if (!data) {
-        return
-    }
     var dataLen = data['urls'].length
 
     var insertStatement = 'INSERT INTO disco.user_history (user_id, title, url, page_url, visit_time) VALUES '

@@ -1,21 +1,27 @@
 var logger = require('../logger').logger
 var connection = require('./db').Pool
 
-function get(data) {
-    if (!data) {
-        return
+function asRec(row) {
+    return {
+        url: row['url'],
+        thumbnail_url: row['thumbnail_url']
     }
+}
+
+function get(data) {
     var userId = data['userId']
     var params = [userId, userId]
-
-    var query = ' SELECT  *' +
+logger.debug(userId)
+    var query =
+        ' SELECT  recs_for_top_cat.url, recs_for_top_cat.thumbnail_url' +
+        '         ' +
         ' FROM    (' +
         '     SELECT  r.*' +
         ' FROM    recommendations r' +
         ' INNER JOIN (' +
-        '     SELECT  category,' +
+        '     SELECT  tt.category,' +
         ' COUNT(*) AS num_views' +
-        ' FROM    (select * from user_history cross join (select category from category order by rand() limit 2) t ) tt' +
+        ' FROM    (select user_history.category, user_history.user_id from user_history cross join (select category from category order by rand() limit 2) t ) tt' +
         ' WHERE   user_id = ?' +
         ' GROUP BY category' +
         ' ORDER BY num_views DESC' +
