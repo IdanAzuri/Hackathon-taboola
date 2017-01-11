@@ -30,7 +30,7 @@ window.onload = function() {
     ({
         type: "POST",
         url: url,
-        dataType: 'json',
+        //dataType: 'json',
         async: false,
         data: JSON.stringify(postObj),
         success: function( data, textStatus, jQxhr ){
