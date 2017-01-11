@@ -26,18 +26,25 @@ window.onload = function() {
     var url = homepageUrl + "disco/get";
     var postObj = {params: {userId: USER_ID}};
     console.log("url: "+url);
-    $.ajax
-    ({
-        type: "POST",
-        url: url,
-        //dataType: 'json',
-        async: false,
-        data: JSON.stringify(postObj),
-        success: function( data, textStatus, jQxhr ){
-            console.log(data);
-            renderRecs(data);
-    },
-    })
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", url);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = function() {
+        console.log("response: " + xmlhttp.responseText)
+    };
+    xmlhttp.send(JSON.stringify(postObj));
+    // $.ajax
+    // ({
+    //     type: "POST",
+    //     url: url,
+    //     //dataType: 'json',
+    //     async: false,
+    //     data: JSON.stringify(postObj),
+    //     success: function( data, textStatus, jQxhr ){
+    //         console.log(data);
+    //         renderRecs(data);
+    // },
+    // })
 }
 
 getId();
