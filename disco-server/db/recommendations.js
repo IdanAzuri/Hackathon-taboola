@@ -1,13 +1,12 @@
 var logger = require('../logger').logger
 var connection = require('./db').Pool
 
-function get(data) {
-    logger.debug('all       '+JSON.stringify(data))
+function get(data, callback) {
     var userId = data['userId']
     var params = [userId, userId]
-logger.debug('usd     '+userId)
+
     var query =
-        ' SELECT  recs_for_top_cat.url, recs_for_top_cat.thumbnail_url' +
+        ' SELECT  recs_for_top_cat.url, recs_for_top_cat.screenshot_url thumbnail_url' +
         '         ' +
         ' FROM    (' +
         '     SELECT  r.*' +
@@ -34,7 +33,7 @@ logger.debug('usd     '+userId)
         if (err) {
             logger.error(err)
         }
-        logger.debug('res: ' + results)
+        callback({items: results})
     });
 }
 
