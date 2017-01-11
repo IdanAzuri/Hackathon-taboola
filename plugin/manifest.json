@@ -16,6 +16,7 @@
   },
   "permissions": [
     "tabs",
+    "storage",
     "history",
     "http://*/*",
     "browsingData"

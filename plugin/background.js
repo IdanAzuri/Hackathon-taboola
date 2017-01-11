@@ -4,7 +4,43 @@
 
 var HOMEPAGE = chrome.runtime.getManifest().homepage_url;
 var HISTORY_UPDATE_URL = HOMEPAGE + "hist/save";
+var USER_ID = 0;
 var counter = 0;
+
+function getRandomToken() {
+    // E.g. 8 * 32 = 256 bits token
+    var randomPool = new Uint8Array(32);
+    crypto.getRandomValues(randomPool);
+    var hex = '';
+    for (var i = 0; i < randomPool.length; ++i) {
+        hex += randomPool[i].toString(16);
+    }
+    // E.g. db18458e2782b2b77e36769c569e263a53885a9944dd0a861e5064eac16f1a
+    return hex;
+}
+
+function getUserId() {
+
+    chrome.storage.sync.get('userid', function(items) {
+        var userid = items.userid;
+        if (userid) {
+            useToken(userid);
+        } else {
+            userid = getRandomToken();
+            chrome.storage.sync.set({userid: userid}, function() {
+                useToken(userid);
+                //console.log("UserId=" + userid);
+            });
+        }
+        function useToken(userid) {
+            // TODO: Use user id for authentication or whatever you want.
+            console.log("UserId=" + userid);
+            USER_ID = userid;
+        }
+    });
+}
+
+getUserId();
 
 function handleNewUrl(url) {
 	var xmlhttp = new XMLHttpRequest();
@@ -13,7 +49,7 @@ function handleNewUrl(url) {
 	xmlhttp.onreadystatechange = function() {
 		console.log("response: " + xmlhttp.responseText)
 	};
-	xmlhttp.send(JSON.stringify({params:{userId: 2,url:url}}));
+	xmlhttp.send(JSON.stringify({params:{userId: USER_ID , url:[url]}}));
 }
 
 chrome.history.onVisited.addListener(function(item) {
