@@ -21,6 +21,7 @@ function getUserHistory(){
 
 function handleUrls(urls) {
 	var urlsObj = {params:{userId: USER_ID , urls: urls}};
+	//console.log(urlsObj);
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", HISTORY_UPDATE_URL);
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
@@ -37,6 +38,7 @@ chrome.runtime.onInstalled.addListener(function(details){
 });
 chrome.history.onVisited.addListener(function(item) {
 	if(item.url){
+		//console.log(item);
 		handleUrls([item]);
 	}
 });
