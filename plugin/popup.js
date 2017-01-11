@@ -74,15 +74,6 @@ function getCurrentTabUrl(callback) {
 
     callback(url);
   });
-
-  // Most methods of the Chrome extension APIs are asynchronous. This means that
-  // you CANNOT do something like this:
-  //
-  // var url;
-  // chrome.tabs.query(queryInfo, function(tabs) {
-  //   url = tabs[0].url;
-  // });
-  // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
 
 function renderRecs(recs) {
@@ -94,9 +85,9 @@ function renderRecs(recs) {
 
     $('#recList').append(trHTML);
 }
-
+var homepageUrl = chrome.runtime.getManifest().homepage_url;
 document.addEventListener('DOMContentLoaded', function() {
-    $.getJSON( "http://172.25.8.114:3000/disco/get/", function(data) {
+    $.getJSON( homepageUrl + "disco/get/", function(data) {
         renderRecs(data)
     })
     .fail(function() {
