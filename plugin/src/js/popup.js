@@ -14,57 +14,42 @@ getId();
 
 function renderRecs(recs) {
     var trHTML = '<tr><th colspan=2>You May Like</th></tr>';
-
-    $.each(recs.items, function (i, item) {
-        trHTML += '<tr><td><img id="thmbnl" src="' + item[1] + '"/></td><td valign="middle"><a href="' + item[0] + '" onclick="chrome.tabs.create({url:this.href})">' + item[0] + '</a></td></tr>';
+    var jsonRecs = JSON.parse(recs);
+    $.each(jsonRecs.items, function (i, item) {
+        console.log(item.url)
+        trHTML += '<tr><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a href="' + item.url + '">' + item.url + '</a></td></tr>';
     });
 
     $('#recList').append(trHTML);
 }
 
 window.onload = function() {
-  console.log("In event for recs...");
-    console.log("user id is: "+USER_ID);
+    console.log("In event for recs...");
+    console.log("user id is: " + USER_ID);
     var url = homepageUrl + "disco/get";
     var postObj = {params: {userId: USER_ID}};
-    console.log("url: "+url);
+    console.log("url: " + url);
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", url);
     xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.onreadystatechange = function() {
-        console.log("response: " + xmlhttp.responseText)
-        renderRecs(xmlhttp.responseText)
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+            console.log("response: " + xmlhttp.responseText);
+            renderRecs(xmlhttp.response);
+        }
+
+        // chrome.tabs.getCurrent(function (tab) {
+        //     //Your code below...
+        //     var tabUrl = encodeURIComponent(tab.url);
+        //     var tabTitle = encodeURIComponent(tab.title);
+        //     var myNewUrl = "https://www.mipanga.com/Content/Submit?url=" + tabUrl + "&title=" + tabTitle;
+        //
+        //     //Update the url here.
+        //     chrome.tabs.update(tab.id, {url: myNewUrl});
+        // });
     };
     xmlhttp.send(JSON.stringify(postObj));
-    // $.ajax
-    // ({
-    //     type: "POST",
-    //     url: url,
-    //     //dataType: 'json',
-    //     async: false,
-    //     data: JSON.stringify(postObj),
-    //     success: function( data, textStatus, jQxhr ){
-    //         console.log(data);
-    //         renderRecs(data);
-    // },
-    // })
 }
-
-
-
-// var homepageUrl = chrome.runtime.getManifest().homepage_url;
-// document.addEventListener('DOMContentLoaded', function() {
-//     console.log("In event for recs...");
-//     console.log("user id is: "+USER_ID);
-//     var url = homepageUrl + "disco/get?"+USER_ID;
-//     console.log("url: "+url);
-//     $.getJSON( url, function(data) {
-//         renderRecs(data)
-//     })
-//     .fail(function() {
-//         $('#recList').append("Couldn't get recommendations");
-//     });
-// });
 
 
 
