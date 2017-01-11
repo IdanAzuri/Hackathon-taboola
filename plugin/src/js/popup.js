@@ -10,6 +10,8 @@ function getId(){
     }
 }
 
+getId();
+
 function renderRecs(recs) {
     var trHTML = '<tr><th colspan=2>You May Like</th></tr>';
 
@@ -47,7 +49,7 @@ window.onload = function() {
     // })
 }
 
-getId();
+
 
 // var homepageUrl = chrome.runtime.getManifest().homepage_url;
 // document.addEventListener('DOMContentLoaded', function() {
