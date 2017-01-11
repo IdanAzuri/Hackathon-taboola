@@ -1,3 +1,4 @@
+var USER_ID = 0;
 /**
  * Created by idan.a on 11/01/2017.
  */
@@ -89,12 +90,13 @@ function getUserId() {
             userid = getRandomToken();
             chrome.storage.sync.set({userid: userid}, function() {
                 useToken(userid);
-                console.log("UserId=" + getUserId());
+                console.log("UserId=" + userid);
             });
         }
         function useToken(userid) {
             // TODO: Use user id for authentication or whatever you want.
-            console.log("UserId=" + getUserId());
+            console.log("UserId=" + userid);
+            USER_ID = userid;
         }
     });
 }
