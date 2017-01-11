@@ -1,4 +1,4 @@
-var USER_ID = 0;
+USER_ID = 0;
 /**
  * Created by idan.a on 11/01/2017.
  */
@@ -100,4 +100,6 @@ function getUserId() {
         }
     });
 }
+
+getUserId();
 
