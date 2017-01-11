@@ -1,7 +1,11 @@
 var logger = require('../logger').logger
 var codes = require('../codes')
+var recommendations = require('../db/recommendations')
 
-function getItems() {
+function getItems(data) {
+    if (data) {
+        return recommendations.get(data)
+    }
     return {
         items:[
             ['youtube.com','taboola.png'],
@@ -15,8 +19,9 @@ function getItems() {
 
 function route(server) {
     server.get('/disco/get', function (req, res) {
-        logger.debugReq(req)
-
+        logger.debug(req.body.params)
+        var recs = getItems(req.body.params)
+        logger.debug(recs)
         res.status(codes.OK)
             .json(getItems())
     })

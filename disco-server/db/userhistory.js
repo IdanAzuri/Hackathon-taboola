@@ -13,7 +13,6 @@ function UserHistory(userId, data) {
 }
 
 function saveHistory(data) {
-    logger.debug(data)
     if (!data) {
         return
     }

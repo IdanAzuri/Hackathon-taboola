@@ -1,5 +1,4 @@
 const PORT = 3000
-const STABLE = 3001
 
 var logger = require('./logger').logger
 var codes = require('./codes')
@@ -7,7 +6,9 @@ var server = require('express')()
 require('./handlers').add(server)
 var disco = require('./disco')
 var hist = require('./hist')
+var user = require('./user')
 
+user.route(server)
 disco.route(server)
 hist.route(server)
 
