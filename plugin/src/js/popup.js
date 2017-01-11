@@ -1,3 +1,15 @@
+USER_ID = 0;
+var homepageUrl = chrome.runtime.getManifest().homepage_url;
+
+function getId(){
+    if (USER_ID == 0){
+        chrome.storage.sync.get('userId', function(result) {
+            console.log("in pop up, got id: "+result.userId);
+            USER_ID = result.userId;
+        });
+    }
+}
+
 function renderRecs(recs) {
     var trHTML = '<tr><th colspan=2>You May Like</th></tr>';
 
@@ -8,12 +20,41 @@ function renderRecs(recs) {
     $('#recList').append(trHTML);
 }
 
-var homepageUrl = chrome.runtime.getManifest().homepage_url;
-document.addEventListener('DOMContentLoaded', function() {
-    $.getJSON( homepageUrl + "disco/get/", function(data) {
-        renderRecs(data)
+window.onload = function() {
+  console.log("In event for recs...");
+    console.log("user id is: "+USER_ID);
+    var url = homepageUrl + "disco/get";
+    var postObj = {params: {userId: USER_ID}};
+    console.log("url: "+url);
+    $.ajax
+    ({
+        type: "POST",
+        url: url,
+        dataType: 'json',
+        async: false,
+        data: JSON.stringify(postObj),
+        success: function( data, textStatus, jQxhr ){
+            console.log(data);
+            renderRecs(data);
+    },
     })
-    .fail(function() {
-        $('#recList').append("Couldn't get recommendations");
-    });
-});
+}
+
+getId();
+
+// var homepageUrl = chrome.runtime.getManifest().homepage_url;
+// document.addEventListener('DOMContentLoaded', function() {
+//     console.log("In event for recs...");
+//     console.log("user id is: "+USER_ID);
+//     var url = homepageUrl + "disco/get?"+USER_ID;
+//     console.log("url: "+url);
+//     $.getJSON( url, function(data) {
+//         renderRecs(data)
+//     })
+//     .fail(function() {
+//         $('#recList').append("Couldn't get recommendations");
+//     });
+// });
+
+
+
