@@ -33,6 +33,7 @@ window.onload = function() {
     xmlhttp.setRequestHeader("Content-Type", "application/json");
     xmlhttp.onreadystatechange = function() {
         console.log("response: " + xmlhttp.responseText)
+        renderRecs(xmlhttp.responseText)
     };
     xmlhttp.send(JSON.stringify(postObj));
     // $.ajax
