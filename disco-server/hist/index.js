@@ -1,11 +1,18 @@
 var logger = require('../logger').logger
 var codes = require('../codes')
+var db = require('../db/userhistory')
+
+function save(data) {
+    if (data) {
+        db.saveHistory(data)
+    }
+    return data
+}
 
 function route(server) {
     server.post('/hist/save', function (req, res) {
-        logger.debugReq(req)
         res.status(codes.OK)
-            .json(req.body.params)
+            .json(save(req.body.params))
     })
 }
 

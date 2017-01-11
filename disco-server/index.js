@@ -6,7 +6,9 @@ var server = require('express')()
 require('./handlers').add(server)
 var disco = require('./disco')
 var hist = require('./hist')
+var user = require('./user')
 
+user.route(server)
 disco.route(server)
 hist.route(server)
 
@@ -14,8 +16,10 @@ server.get('/', function (req, res) {
     res.send('Aces!');
 })
 
+function init(port) {
+    server.listen(port, function () {
+        logger.info('Running on ' + port)
+    })
+}
 
-
-server.listen(PORT, function () {
-    logger.info('Running on ' + PORT)
-})
+init(PORT)
