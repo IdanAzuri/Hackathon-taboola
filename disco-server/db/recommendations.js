@@ -6,7 +6,7 @@ function get(data, callback) {
     var params = [userId, userId]
 
     var query =
-        ' SELECT  recs_for_top_cat.url, recs_for_top_cat.screenshot_url thumbnail_url' +
+        ' SELECT  recs_for_top_cat.url, recs_for_top_cat.thumbnail_url thumbnail_url' +
         '         ' +
         ' FROM    (' +
         '     SELECT  r.*' +
