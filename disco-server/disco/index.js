@@ -18,7 +18,7 @@ function route(server) {
         logger.debugReq(req)
 
         res.status(codes.OK)
-            .json(getItems)
+            .json(getItems())
     })
 }
 
