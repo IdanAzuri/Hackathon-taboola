@@ -1,0 +1,336 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   '--force',
+1 verbose cli   'nodemon' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.3
+4 warn using --force I sure hope you know what you are doing.
+5 verbose install initial load of /usr/local/lib/package.json
+6 verbose readDependencies loading dependencies from /usr/local/lib/package.json
+7 silly cache add args [ 'nodemon', null ]
+8 verbose cache add spec nodemon
+9 silly cache add parsed spec Result {
+9 silly cache add   raw: 'nodemon',
+9 silly cache add   scope: null,
+9 silly cache add   name: 'nodemon',
+9 silly cache add   rawSpec: '',
+9 silly cache add   spec: '*',
+9 silly cache add   type: 'range' }
+10 silly addNamed nodemon@*
+11 verbose addNamed "*" is a valid semver range for nodemon
+12 silly addNameRange { name: 'nodemon', range: '*', hasData: false }
+13 silly mapToRegistry name nodemon
+14 silly mapToRegistry using default registry
+15 silly mapToRegistry registry https://registry.npmjs.org/
+16 silly mapToRegistry uri https://registry.npmjs.org/nodemon
+17 verbose addNameRange registry:https://registry.npmjs.org/nodemon not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/nodemon
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 12:16:09 PM
+21 verbose request id 60858b51b83c0bc3
+22 verbose etag W/"5873ec73-30c51"
+23 verbose lastModified Mon, 09 Jan 2017 20:02:59 GMT
+24 http request GET https://registry.npmjs.org/nodemon
+25 http 304 https://registry.npmjs.org/nodemon
+26 verbose headers { date: 'Wed, 11 Jan 2017 10:16:09 GMT',
+26 verbose headers   via: '1.1 varnish',
+26 verbose headers   'cache-control': 'max-age=300',
+26 verbose headers   etag: 'W/"5873ec73-30c51"',
+26 verbose headers   age: '205',
+26 verbose headers   connection: 'keep-alive',
+26 verbose headers   'x-served-by': 'cache-hhn1539-HHN',
+26 verbose headers   'x-cache': 'HIT',
+26 verbose headers   'x-cache-hits': '2',
+26 verbose headers   'x-timer': 'S1484129769.943888,VS0,VE0',
+26 verbose headers   vary: 'Accept-Encoding' }
+27 silly get cb [ 304,
+27 silly get   { date: 'Wed, 11 Jan 2017 10:16:09 GMT',
+27 silly get     via: '1.1 varnish',
+27 silly get     'cache-control': 'max-age=300',
+27 silly get     etag: 'W/"5873ec73-30c51"',
+27 silly get     age: '205',
+27 silly get     connection: 'keep-alive',
+27 silly get     'x-served-by': 'cache-hhn1539-HHN',
+27 silly get     'x-cache': 'HIT',
+27 silly get     'x-cache-hits': '2',
+27 silly get     'x-timer': 'S1484129769.943888,VS0,VE0',
+27 silly get     vary: 'Accept-Encoding' } ]
+28 verbose etag https://registry.npmjs.org/nodemon from cache
+29 verbose get saving nodemon to /Users/ran.h/.npm/registry.npmjs.org/nodemon/.cache.json
+30 silly addNameRange number 2 { name: 'nodemon', range: '*', hasData: true }
+31 silly addNameRange versions [ 'nodemon',
+31 silly addNameRange   [ '0.1.4',
+31 silly addNameRange     '0.1.5',
+31 silly addNameRange     '0.1.6',
+31 silly addNameRange     '0.1.7',
+31 silly addNameRange     '0.1.8',
+31 silly addNameRange     '0.2.0',
+31 silly addNameRange     '0.2.1',
+31 silly addNameRange     '0.2.2',
+31 silly addNameRange     '0.3.0',
+31 silly addNameRange     '0.3.1',
+31 silly addNameRange     '0.3.2',
+31 silly addNameRange     '0.4.0',
+31 silly addNameRange     '0.4.1',
+31 silly addNameRange     '0.5.0',
+31 silly addNameRange     '0.5.1',
+31 silly addNameRange     '0.5.2',
+31 silly addNameRange     '0.5.3',
+31 silly addNameRange     '0.5.4',
+31 silly addNameRange     '0.5.5',
+31 silly addNameRange     '0.5.6',
+31 silly addNameRange     '0.5.7',
+31 silly addNameRange     '0.6.0',
+31 silly addNameRange     '0.6.1',
+31 silly addNameRange     '0.6.2',
+31 silly addNameRange     '0.6.3',
+31 silly addNameRange     '0.6.4',
+31 silly addNameRange     '0.6.5',
+31 silly addNameRange     '0.6.6',
+31 silly addNameRange     '0.6.7',
+31 silly addNameRange     '0.6.8',
+31 silly addNameRange     '0.6.9',
+31 silly addNameRange     '0.6.10',
+31 silly addNameRange     '0.6.11',
+31 silly addNameRange     '0.6.12',
+31 silly addNameRange     '0.6.13',
+31 silly addNameRange     '0.6.14',
+31 silly addNameRange     '0.6.15',
+31 silly addNameRange     '0.6.16',
+31 silly addNameRange     '0.6.17',
+31 silly addNameRange     '0.6.18',
+31 silly addNameRange     '0.6.19',
+31 silly addNameRange     '0.6.20',
+31 silly addNameRange     '0.6.21',
+31 silly addNameRange     '0.6.22',
+31 silly addNameRange     '0.6.23',
+31 silly addNameRange     '0.7.0',
+31 silly addNameRange     '0.7.1',
+31 silly addNameRange     '0.7.2',
+31 silly addNameRange     '0.7.3',
+31 silly addNameRange     '0.7.4',
+31 silly addNameRange     '0.7.5',
+31 silly addNameRange     '0.7.6',
+31 silly addNameRange     '0.7.7',
+31 silly addNameRange     '0.7.8',
+31 silly addNameRange     '0.7.10',
+31 silly addNameRange     '0.9.0',
+31 silly addNameRange     '0.9.1',
+31 silly addNameRange     '0.9.2',
+31 silly addNameRange     '0.9.3',
+31 silly addNameRange     '0.9.5',
+31 silly addNameRange     '0.9.6',
+31 silly addNameRange     '0.9.7',
+31 silly addNameRange     '0.9.10',
+31 silly addNameRange     '0.9.11',
+31 silly addNameRange     '0.9.12',
+31 silly addNameRange     '0.9.14',
+31 silly addNameRange     '0.9.16',
+31 silly addNameRange     '0.9.17',
+31 silly addNameRange     '1.0.0',
+31 silly addNameRange     '1.0.1',
+31 silly addNameRange     '1.0.2',
+31 silly addNameRange     '1.0.2-rc',
+31 silly addNameRange     '0.6.10-a',
+31 silly addNameRange     '1.0.2-rc3',
+31 silly addNameRange     '1.0.2-rc4',
+31 silly addNameRange     '1.0.3',
+31 silly addNameRange     '1.0.4',
+31 silly addNameRange     '1.0.5',
+31 silly addNameRange     '1.0.6',
+31 silly addNameRange     '1.0.7',
+31 silly addNameRange     '1.0.8',
+31 silly addNameRange     '1.0.9',
+31 silly addNameRange     '1.0.10',
+31 silly addNameRange     '1.0.11',
+31 silly addNameRange     '1.0.12',
+31 silly addNameRange     '1.0.13',
+31 silly addNameRange     '1.0.14',
+31 silly addNameRange     '1.0.15',
+31 silly addNameRange     '1.0.16',
+31 silly addNameRange     '1.0.17-rc1',
+31 silly addNameRange     '1.0.17-rc2',
+31 silly addNameRange     '1.0.17',
+31 silly addNameRange     '1.0.18',
+31 silly addNameRange     '1.0.19',
+31 silly addNameRange     '1.0.20',
+31 silly addNameRange     '1.1.0-alpha',
+31 silly addNameRange     '1.1.0',
+31 silly addNameRange     '1.1.1',
+31 silly addNameRange     '1.2.0',
+31 silly addNameRange     '1.2.1',
+31 silly addNameRange     '1.3.0-0',
+31 silly addNameRange     '1.3.0-1',
+31 silly addNameRange     '1.3.0-2',
+31 silly addNameRange     '1.3.0-3',
+31 silly addNameRange     '1.3.0-4',
+31 silly addNameRange     '1.3.0-5',
+31 silly addNameRange     '1.3.0-6',
+31 silly addNameRange     '1.3.0-7',
+31 silly addNameRange     '1.3.0',
+31 silly addNameRange     '1.3.1',
+31 silly addNameRange     '1.3.2',
+31 silly addNameRange     '1.3.3',
+31 silly addNameRange     '1.3.5',
+31 silly addNameRange     '1.3.6',
+31 silly addNameRange     '1.3.7',
+31 silly addNameRange     '1.3.8',
+31 silly addNameRange     '1.4.0',
+31 silly addNameRange     '1.4.1',
+31 silly addNameRange     '1.5.0-alpha1',
+31 silly addNameRange     '1.5.0-alpha2',
+31 silly addNameRange     '1.5.0-alpha3',
+31 silly addNameRange     '1.5.0-alpha4',
+31 silly addNameRange     '1.4.2',
+31 silly addNameRange     '1.5.0',
+31 silly addNameRange     '1.5.1',
+31 silly addNameRange     '1.6.0',
+31 silly addNameRange     '1.6.1',
+31 silly addNameRange     '1.7.0',
+31 silly addNameRange     '1.7.1',
+31 silly addNameRange     '1.7.2',
+31 silly addNameRange     '1.7.3',
+31 silly addNameRange     '1.8.0',
+31 silly addNameRange     '1.8.1',
+31 silly addNameRange     '1.9.0',
+31 silly addNameRange     '1.9.1',
+31 silly addNameRange     '1.9.2',
+31 silly addNameRange     '1.10.0',
+31 silly addNameRange     '1.10.1',
+31 silly addNameRange     '1.10.2',
+31 silly addNameRange     '1.11.0' ] ]
+32 silly addNamed nodemon@1.11.0
+33 verbose addNamed "1.11.0" is a plain semver version for nodemon
+34 silly mapToRegistry name nodemon
+35 silly mapToRegistry using default registry
+36 silly mapToRegistry registry https://registry.npmjs.org/
+37 silly mapToRegistry uri https://registry.npmjs.org/nodemon
+38 verbose addRemoteTarball https://registry.npmjs.org/nodemon/-/nodemon-1.11.0.tgz not in flight; adding
+39 verbose addRemoteTarball [ 'https://registry.npmjs.org/nodemon/-/nodemon-1.11.0.tgz',
+39 verbose addRemoteTarball   '226c562bd2a7b13d3d7518b49ad4828a3623d06c' ]
+40 info retry fetch attempt 1 at 12:16:09 PM
+41 info attempt registry request try #1 at 12:16:09 PM
+42 http fetch GET https://registry.npmjs.org/nodemon/-/nodemon-1.11.0.tgz
+43 http fetch 200 https://registry.npmjs.org/nodemon/-/nodemon-1.11.0.tgz
+44 silly fetchAndShaCheck shasum 226c562bd2a7b13d3d7518b49ad4828a3623d06c
+45 verbose addTmpTarball /var/folders/fj/0_nqw37j1qj3l8rq_7dx7871t41_pz/T/npm-38772-1116e367/registry.npmjs.org/nodemon/-/nodemon-1.11.0.tgz not in flight; adding
+46 verbose addTmpTarball already have metadata; skipping unpack for nodemon@1.11.0
+47 silly cache afterAdd nodemon@1.11.0
+48 verbose afterAdd /Users/ran.h/.npm/nodemon/1.11.0/package/package.json not in flight; writing
+49 verbose afterAdd /Users/ran.h/.npm/nodemon/1.11.0/package/package.json written
+50 silly install resolved [ { name: 'nodemon',
+50 silly install resolved     homepage: 'http://nodemon.io',
+50 silly install resolved     author: { name: 'Remy Sharp', url: 'http://github.com/remy' },
+50 silly install resolved     bin: { nodemon: './bin/nodemon.js' },
+50 silly install resolved     engines: { node: '>=0.8' },
+50 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/remy/nodemon.git' },
+50 silly install resolved     description: 'Simple monitor script for use during development of a node.js app.',
+50 silly install resolved     keywords:
+50 silly install resolved      [ 'monitor',
+50 silly install resolved        'development',
+50 silly install resolved        'restart',
+50 silly install resolved        'autoload',
+50 silly install resolved        'reload',
+50 silly install resolved        'terminal' ],
+50 silly install resolved     license: 'MIT',
+50 silly install resolved     main: './lib/nodemon',
+50 silly install resolved     scripts:
+50 silly install resolved      { coverage: 'istanbul cover _mocha -- --timeout 30000 --ui bdd --reporter list test/**/*.test.js',
+50 silly install resolved        lint: 'jscs lib/**/*.js -v',
+50 silly install resolved        ':spec': 'mocha --timeout 30000 --ui bdd test/**/*.test.js',
+50 silly install resolved        test: 'npm run lint && npm run spec',
+50 silly install resolved        spec: 'for FILE in test/**/*.test.js; do echo $FILE; ./node_modules/.bin/mocha --timeout 30000 $FILE; if [ $? -ne 0 ]; then exit 1; fi; sleep 1; done',
+50 silly install resolved        web: 'node web',
+50 silly install resolved        'semantic-release': 'semantic-release pre && npm publish && semantic-release post' },
+50 silly install resolved     devDependencies:
+50 silly install resolved      { async: '1.4.2',
+50 silly install resolved        'coffee-script': '~1.7.1',
+50 silly install resolved        connect: '~2.19.1',
+50 silly install resolved        istanbul: '~0.2.10',
+50 silly install resolved        jscs: '2.1.1',
+50 silly install resolved        mocha: '2.3.3',
+50 silly install resolved        should: '~4.0.0',
+50 silly install resolved        'semantic-release': '4.3.5' },
+50 silly install resolved     dependencies:
+50 silly install resolved      { chokidar: '^1.4.3',
+50 silly install resolved        debug: '^2.2.0',
+50 silly install resolved        'es6-promise': '^3.0.2',
+50 silly install resolved        'ignore-by-default': '^1.0.0',
+50 silly install resolved        'lodash.defaults': '^3.1.2',
+50 silly install resolved        minimatch: '^3.0.0',
+50 silly install resolved        'ps-tree': '^1.0.1',
+50 silly install resolved        touch: '1.0.0',
+50 silly install resolved        undefsafe: '0.0.3',
+50 silly install resolved        'update-notifier': '0.5.0' },
+50 silly install resolved     version: '1.11.0',
+50 silly install resolved     gitHead: '2cd85b1f609e9749d19afcdbd71368e6ab063f9d',
+50 silly install resolved     bugs: { url: 'https://github.com/remy/nodemon/issues' },
+50 silly install resolved     _id: 'nodemon@1.11.0',
+50 silly install resolved     _shasum: '226c562bd2a7b13d3d7518b49ad4828a3623d06c',
+50 silly install resolved     _from: 'nodemon@*',
+50 silly install resolved     _npmVersion: '2.15.11',
+50 silly install resolved     _nodeVersion: '6.7.0',
+50 silly install resolved     _npmUser: { name: 'remy', email: 'remy@leftlogic.com' },
+50 silly install resolved     dist:
+50 silly install resolved      { shasum: '226c562bd2a7b13d3d7518b49ad4828a3623d06c',
+50 silly install resolved        tarball: 'https://registry.npmjs.org/nodemon/-/nodemon-1.11.0.tgz' },
+50 silly install resolved     maintainers: [ [Object] ],
+50 silly install resolved     _npmOperationalInternal:
+50 silly install resolved      { host: 'packages-12-west.internal.npmjs.com',
+50 silly install resolved        tmp: 'tmp/nodemon-1.11.0.tgz_1475780171533_0.901109219994396' },
+50 silly install resolved     directories: {},
+50 silly install resolved     _resolved: 'https://registry.npmjs.org/nodemon/-/nodemon-1.11.0.tgz' } ]
+51 info install nodemon@1.11.0 into /usr/local/lib
+52 info installOne nodemon@1.11.0
+53 verbose installOne of nodemon to /usr/local/lib not in flight; installing
+54 verbose lock using /Users/ran.h/.npm/_locks/nodemon-49f7ed19e778991e.lock for /usr/local/lib/node_modules/nodemon
+55 silly install write writing nodemon 1.11.0 to /usr/local/lib/node_modules/nodemon
+56 verbose unbuild lib/node_modules/nodemon
+57 silly gentlyRm /usr/local/lib/node_modules/nodemon is being purged from base /usr/local
+58 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/nodemon
+59 verbose tar unpack /Users/ran.h/.npm/nodemon/1.11.0/package.tgz
+60 verbose tar unpacking to /usr/local/lib/node_modules/nodemon
+61 silly gentlyRm /usr/local/lib/node_modules/nodemon is being purged
+62 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/nodemon
+63 silly gunzTarPerm modes [ '755', '644' ]
+64 error tar.unpack untar error /Users/ran.h/.npm/nodemon/1.11.0/package.tgz
+65 verbose unlock done using /Users/ran.h/.npm/_locks/nodemon-49f7ed19e778991e.lock for /usr/local/lib/node_modules/nodemon
+66 verbose fstream_path /usr/local/lib/node_modules/nodemon
+67 verbose fstream_type Directory
+68 verbose fstream_class DirWriter
+69 verbose stack Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/nodemon'
+69 verbose stack     at Error (native)
+70 verbose fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25
+70 verbose fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53
+70 verbose fstream_stack FSReqWrap.oncomplete (fs.js:82:15)
+71 verbose cwd /Users/ran.h/work/taboola/Hackathon-taboola
+72 error Darwin 15.6.0
+73 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "--force" "nodemon"
+74 error node v4.2.3
+75 error npm  v2.14.7
+76 error path /usr/local/lib/node_modules/nodemon
+77 error code EACCES
+78 error errno -13
+79 error syscall mkdir
+80 error Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/nodemon'
+80 error     at Error (native)
+80 error  { [Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/nodemon']
+80 error   errno: -13,
+80 error   code: 'EACCES',
+80 error   syscall: 'mkdir',
+80 error   path: '/usr/local/lib/node_modules/nodemon',
+80 error   fstream_type: 'Directory',
+80 error   fstream_path: '/usr/local/lib/node_modules/nodemon',
+80 error   fstream_class: 'DirWriter',
+80 error   fstream_stack:
+80 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25',
+80 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53',
+80 error      'FSReqWrap.oncomplete (fs.js:82:15)' ] }
+81 error Please try running this command again as root/Administrator.
+82 verbose exit [ -13, true ]
+83 verbose unbuild lib/node_modules/nodemon
+84 silly gentlyRm /usr/local/lib/node_modules/nodemon is being purged from base /usr/local
+85 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/nodemon
