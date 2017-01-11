@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-HOMEPAGE = chrome.runtime.getManifest().homepage_url;
 var HISTORY_UPDATE_URL = HOMEPAGE + "hist/save";
 var counter = 0;
 var MAX_ITEMS = 10;

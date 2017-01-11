@@ -14,7 +14,7 @@ function renderRecs(recs) {
     var trHTML = '<tr><th colspan=2>You May Like</th></tr>';
 
     $.each(recs.items, function (i, item) {
-        trHTML += '<tr><td><img id="thmbnl" src="' + item[1] + '"/></td><td valign="middle">' + item[0] + '</td></tr>';
+        trHTML += '<tr><td><img id="thmbnl" src="' + item[1] + '"/></td><td valign="middle"><a href="' + item[0] + '" onclick="chrome.tabs.create({url:this.href})">' + item[0] + '</a></td></tr>';
     });
 
     $('#recList').append(trHTML);
@@ -26,18 +26,25 @@ window.onload = function() {
     var url = homepageUrl + "disco/get";
     var postObj = {params: {userId: USER_ID}};
     console.log("url: "+url);
-    $.ajax
-    ({
-        type: "POST",
-        url: url,
-        //dataType: 'json',
-        async: false,
-        data: JSON.stringify(postObj),
-        success: function( data, textStatus, jQxhr ){
-            console.log(data);
-            renderRecs(data);
-    },
-    })
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", url);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = function() {
+        console.log("response: " + xmlhttp.responseText)
+    };
+    xmlhttp.send(JSON.stringify(postObj));
+    // $.ajax
+    // ({
+    //     type: "POST",
+    //     url: url,
+    //     //dataType: 'json',
+    //     async: false,
+    //     data: JSON.stringify(postObj),
+    //     success: function( data, textStatus, jQxhr ){
+    //         console.log(data);
+    //         renderRecs(data);
+    // },
+    // })
 }
 
 getId();
