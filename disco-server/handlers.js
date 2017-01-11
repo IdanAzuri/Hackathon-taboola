@@ -1,5 +1,5 @@
-
-
+var logger = require('./logger').logger
+var codes = require('./codes')
 var bodyParser = require("body-parser")
 
 function errorHandler(err, req, res, next) {
