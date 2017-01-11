@@ -32,6 +32,8 @@ function getUserIdFromServer(){
 	xmlhttp.send();
 }
 
-chrome.windows.onCreated.addListener(function() {
-	getUserId();
-})
+getUserId();
+
+// chrome.windows.onCreated.addListener(function() {
+// 	getUserId();
+// })
