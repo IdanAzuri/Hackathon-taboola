@@ -19,6 +19,7 @@
     "storage",
     "history",
     "http://*/*",
+    "https://*/*",
     "browsingData"
   ],
   "web_accessible_resources": [
