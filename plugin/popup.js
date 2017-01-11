@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     $.getJSON( homepageUrl + "disco/get/", function(data) {
         renderRecs(data)
     })
-        .fail(function() {
-            $('#recList').append("Couldn't get recommendations");
-        });
+    .fail(function() {
+        $('#recList').append("Couldn't get recommendations");
+    });
 });
