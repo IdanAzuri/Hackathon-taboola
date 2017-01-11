@@ -16,7 +16,6 @@ function renderRecs(recs) {
     var trHTML = '<tr><th colspan=2>You May Like</th></tr>';
     var jsonRecs = JSON.parse(recs);
     $.each(jsonRecs.items, function (i, item) {
-        console.log(item.url)
         trHTML += '<tr><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a href="' + item.url + '">' + item.url + '</a></td></tr>';
     });
 
@@ -38,15 +37,18 @@ window.onload = function() {
             renderRecs(xmlhttp.response);
         }
 
-        // chrome.tabs.getCurrent(function (tab) {
-        //     //Your code below...
-        //     var tabUrl = encodeURIComponent(tab.url);
-        //     var tabTitle = encodeURIComponent(tab.title);
-        //     var myNewUrl = "https://www.mipanga.com/Content/Submit?url=" + tabUrl + "&title=" + tabTitle;
-        //
-        //     //Update the url here.
-        //     chrome.tabs.update(tab.id, {url: myNewUrl});
-        // });
+        var hrefs = document.getElementsByTagName("a");
+
+        function openLink() {
+            var href = this.href;
+
+            chrome.tabs.create({url: "www.youtube.com"});
+
+        }
+
+        for (var i=0,a; a=hrefs[i]; ++i) {
+            hrefs[i].addEventListener('click', openLink);
+        }
     };
     xmlhttp.send(JSON.stringify(postObj));
 }
