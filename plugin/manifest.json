@@ -16,6 +16,7 @@
   },
   "permissions": [
     "tabs",
+    "history",
     "http://*/*"
   ],
   "web_accessible_resources": [
