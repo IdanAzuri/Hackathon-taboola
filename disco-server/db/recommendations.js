@@ -15,7 +15,7 @@ function get(data) {
         ' INNER JOIN (' +
         '     SELECT  category,' +
         ' COUNT(*) AS num_views' +
-        ' FROM    (select * from user_history cross join (select category from category order by rand() limit 2) t ) tt' +
+        ' FROM    (select uh.user_id, t.category from user_history uh cross join (select category from category order by rand() limit 2) t ) tt' +
         ' WHERE   user_id = ?' +
         ' GROUP BY category' +
         ' ORDER BY num_views DESC' +

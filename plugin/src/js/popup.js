@@ -16,7 +16,7 @@ function renderRecs(recs) {
     var trHTML = '<tr><th colspan=2>You May Like</th></tr>';
 
     $.each(recs.items, function (i, item) {
-        trHTML += '<tr><td><img id="thmbnl" src="' + item[1] + '"/></td><td valign="middle">' + item[0] + '</td></tr>';
+        trHTML += '<tr><td><img id="thmbnl" src="' + item[1] + '"/></td><td valign="middle"><a href="' + item[0] + '" onclick="chrome.tabs.create({url:this.href})">' + item[0] + '</a></td></tr>';
     });
 
     $('#recList').append(trHTML);
