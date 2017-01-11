@@ -2,12 +2,10 @@ var logger = require('../logger').logger
 var connection = require('./db').Pool
 
 function get(data) {
-    if (!data) {
-        return
-    }
+    logger.debug('all       '+JSON.stringify(data))
     var userId = data['userId']
     var params = [userId, userId]
-logger.debug(userId)
+logger.debug('usd     '+userId)
     var query =
         ' SELECT  recs_for_top_cat.url, recs_for_top_cat.thumbnail_url' +
         '         ' +

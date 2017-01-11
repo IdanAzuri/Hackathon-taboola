@@ -15,9 +15,6 @@ function getUserId(){
     	else{
     		console.log("generating id from server...");
     		getUserIdFromServer();
-    		chrome.storage.sync.set({userId: USER_ID}, function() {
-	            console.log("saved new user id: " + USER_ID);
-	        });
     	}
 	});
 }
@@ -28,6 +25,9 @@ function getUserIdFromServer(){
 	xmlhttp.onreadystatechange = function() {
 		console.log("response id from server: " + xmlhttp.responseText);
 		USER_ID = xmlhttp.responseText;
+        chrome.storage.sync.set({userId: USER_ID}, function() {
+            console.log("saved new user id: " + USER_ID);
+        });
 	};
 	xmlhttp.send();
 }

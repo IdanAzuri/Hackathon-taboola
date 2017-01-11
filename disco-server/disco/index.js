@@ -21,6 +21,7 @@ function getItems(data) {
 
 function route(server) {
     server.post('/disco/get', function (req, res) {
+        logger.debug(JSON.stringify(req.body))
         var recs = getItems(req.body.params)
         logger.debug(recs)
         res.status(codes.OK)
