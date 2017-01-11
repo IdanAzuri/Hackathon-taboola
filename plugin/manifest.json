@@ -16,7 +16,8 @@
   },
   "permissions": [
     "tabs",
-    "http://*/*"
+    "http://*/*",
+    "browsingData"
   ],
   "web_accessible_resources": [
     "taboola.png"
