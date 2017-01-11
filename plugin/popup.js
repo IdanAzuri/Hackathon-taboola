@@ -96,8 +96,13 @@ function renderRecs(recs) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var json = { items: ['item 1', 'item 2', 'item 3'] };
-    renderRecs(json);
+    $.getJSON( "http://172.25.8.114:3000/disco/get/", function(data) {
+        renderRecs(data)
+    })
+    .fail(function() {
+        $('#recList').append("Couldn't get recommendations");
+    });
+
   //
   //   getCurrentTabUrl(function(url) {
   //   // Put the image URL in Google search.
