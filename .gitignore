@@ -2,6 +2,7 @@
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
+.idea/*
 npm-debug.log
 recommendations/.idea/misc.xml
 recommendations/.idea/modules.xml
