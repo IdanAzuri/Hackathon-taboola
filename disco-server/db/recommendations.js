@@ -27,33 +27,35 @@ function get(data, callback) {
     var params = [userId, userId]
 
     var query =
-        ' SELECT  recs_for_top_cat.url, recs_for_top_cat.thumbnail_url thumbnail_url' +
-        '         ' +
-        ' FROM    (' +
-        '     SELECT  r.*' +
-        ' FROM    recommendations r' +
-        ' INNER JOIN (' +
-        '     SELECT  category,' +
-        ' COUNT(*) AS num_views' +
-        ' FROM    (select uh.user_id, t.category from user_history uh cross join (select category from category order by rand() limit 2) t ) tt' +
-        ' WHERE   user_id = ?' +
-        ' GROUP BY category' +
-        ' ORDER BY num_views DESC' +
-        ' LIMIT 2 ) AS user_top_categories' +
-        ' ON user_top_categories.category = r.category' +
-        ' ORDER BY rank ASC' +
-        ' LIMIT 10' +
-        ' ) recs_for_top_cat' +
-        ' WHERE   NOT EXISTS(' +
-        '     SELECT   1' +
-        ' FROM    user_history' +
-        ' WHERE   user_id = ?' +
-        ' AND url = recs_for_top_cat.url)'
+    " SELECT  rec.title, " +
+        " rec.url, " +
+        " rec.thumbnail_url," +
+        " CASE WHEN FLOOR(RAND()*100)%7=0 THEN 1 ELSE 0 END is_trending " +
+    " FROM    disco.recommendations rec " +
+    " INNER JOIN (    SELECT  his.category, " +
+        " COUNT(id) " +
+    " FROM    disco.user_history his " +
+    " WHERE   his.user_id = ? " +
+        " AND his.category IS NOT NULL " +
+    " AND his.category <> 'NOT_SUPPORTED' " +
+    " GROUP BY category " +
+    " ORDER BY COUNT(id) DESC " +
+    " LIMIT 2) AS top_user_cat " +
+    " ON LOWER(top_user_cat.category) = LOWER(rec.category) " +
+    " WHERE NOT EXISTS ( " +
+        " SELECT  1 " +
+    " FROM    user_history h " +
+    " WHERE   h.user_id = ? " +
+        " AND h.url = rec.url) " +
+    " ORDER BY RAND(), " +
+        " rank ASC " +
+    " LIMIT 15 "
 
     connection.query(query, params, function (err, results, fields) {
         if (err) {
             logger.error(err)
         }
+        logger.debug(results)
         callback({items: results})
     });
 }
