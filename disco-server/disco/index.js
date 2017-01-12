@@ -2,6 +2,7 @@ var logger = require('../logger').logger
 var codes = require('../codes')
 var recommendations = require('../db/recommendations')
 var userdata = require('../db/userdata')
+var userfav = require('../db/userfavs')
 
 var mockData = [
     {
@@ -45,7 +46,7 @@ function route(server) {
     server.post('/disco/get', function (req, res) {
         function sendData(results, data) {
             if(data.userDataRow != undefined && results.items != undefined) {
-                results.items.unshift(data.userDataRow);
+                results.question = data.userDataRow;
             }
             res.status(codes.OK)
                 .json(results)
@@ -55,6 +56,16 @@ function route(server) {
     });
     server.post('/disco/post', function (req, res) {
         userdata.insert(req.body.params);
+    });
+    server.post('/disco/savefav', function (req, res) {
+        userfav.insert(req.body.params);
+    });
+    server.post('/disco/getfav', function (req, res) {
+        function sendData(results) {
+            res.status(codes.OK)
+                .json(results)
+        }
+        userfav.get(req.body.params, sendData);
     })
 }
 
