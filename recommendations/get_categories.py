@@ -102,6 +102,7 @@ if __name__ == "__main__":
                         cursor.execute(update_query, args)
                     except Exception, msg:
                         print msg
+                        conn.commit()
                     print msg
     except Exception, msg:
         print msg
