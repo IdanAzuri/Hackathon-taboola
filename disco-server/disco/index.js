@@ -1,6 +1,7 @@
 var logger = require('../logger').logger
 var codes = require('../codes')
 var recommendations = require('../db/recommendations')
+var userdata = require('../db/userdata')
 
 var mockData = [
     {
@@ -27,7 +28,14 @@ var mockData = [
 
 function getItems(data, callback) {
     if (data) {
-        recommendations.get(data, callback)
+        userdata.hasData(data, function (hasData) {
+            logger.info('hasData callback, ' + hasData);
+            if(!hasData) {
+                 data['userDataRow'] = {'askuser':'male_female'};
+            }
+            recommendations.get(data, callback)
+        });
+
     } else {
         callback(mockData)
     }
@@ -35,7 +43,10 @@ function getItems(data, callback) {
 
 function route(server) {
     server.post('/disco/get', function (req, res) {
-        function sendData(results) {
+        function sendData(results, data) {
+            if(data.userDataRow != undefined && results.items != undefined) {
+                results.items.unshift(data.userDataRow);
+            }
             res.status(codes.OK)
                 .json(results)
         }

@@ -56,7 +56,7 @@ function get(data, callback) {
             logger.error(err)
         }
         logger.debug(results)
-        callback({items: results})
+        callback({items: results}, data)
     });
 }
 

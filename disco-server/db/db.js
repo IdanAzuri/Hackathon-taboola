@@ -1,4 +1,4 @@
-const HOST = 'localhost'
+const HOST = '172.25.8.114'
 const PORT = 3309
 const USER = 'hack'
 const PASSWORD = 'taboola'
