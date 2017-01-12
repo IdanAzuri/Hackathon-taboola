@@ -13,6 +13,13 @@ function getId() {
 }
 
 getId();
+function truncate(string) {
+    if (string.length > 42)
+        return string.substring(0, 40) + '...';
+    else
+        return string;
+};
+var trHTML='';
 function renderRecs(recs) {
     $.each(recs.items, function (i, item) {
         trHTML +=
