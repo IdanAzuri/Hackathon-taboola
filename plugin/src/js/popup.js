@@ -12,18 +12,23 @@ function getId(){
 
 getId();
 
-var trHTML = ''
+
+
 function renderRecs(recs) {
+    var trHTML = '<tr><th colspan=2>You May Like</th></tr>';
     var jsonRecs = JSON.parse(recs);
     $.each(jsonRecs.items, function (i, item) {
-        console.log(item.url)
-        trHTML += '<tr><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a href="' + item.url + '">' + item.url + '</a></td></tr>';
+        trHTML += '<tr><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a class="link" href="' + item.url + '">' + item.url + '</a></td></tr>';
     });
 
     $('#recList').append(trHTML);
+
+    $(".link").click(function () {
+        chrome.tabs.create({ url: "http://" + this.innerHTML });
+    });
 }
 
-function getItems() {
+window.onload = function() {
     console.log("In event for recs...");
     console.log("user id is: " + USER_ID);
     var url = homepageUrl + "disco/get";
@@ -37,19 +42,10 @@ function getItems() {
             console.log("response: " + xmlhttp.responseText);
             renderRecs(xmlhttp.response);
         }
-
-        // chrome.tabs.getCurrent(function (tab) {
-        //     //Your code below...
-        //     var tabUrl = encodeURIComponent(tab.url);
-        //     var tabTitle = encodeURIComponent(tab.title);
-        //     var myNewUrl = "https://www.mipanga.com/Content/Submit?url=" + tabUrl + "&title=" + tabTitle;
-        //
-        //     //Update the url here.
-        //     chrome.tabs.update(tab.id, {url: myNewUrl});
-        // });
     };
     xmlhttp.send(JSON.stringify(postObj));
 }
+
 
 $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
@@ -58,9 +54,6 @@ $(window).scroll(function() {
 });
 
 
-window.onload = function() {
-    getItems()
-}
-
-
-
+//window.onload = function() {
+//    getItems()
+//}
