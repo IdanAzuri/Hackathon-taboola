@@ -26,12 +26,11 @@ function hasData(data, callback) {
 function insert(data) {
     var userId = data['userId'];
     var userData = data['userGender'];
-    var params = [userData, userId];
+    var params = [userId,userData];
 
     var query =
-        ' UPDATE TABLE user_data' +
-        ' SET data = ?' +
-        ' WHERE user_id = ?';
+        ' REPLACE INTO user_data( user_id,data)' +
+        ' VALUES (?,?)';
 
     connection.query(query, params, function (err, results, fields) {
         if (err) {
