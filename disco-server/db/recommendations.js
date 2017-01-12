@@ -30,10 +30,11 @@ function get(data, callback) {
     " SELECT  rec.title, " +
         " rec.url, " +
         " rec.thumbnail_url," +
-        " CASE WHEN FLOOR(RAND()*100)%7=0 THEN 1 ELSE 0 END is_trending " +
+        " CASE WHEN FLOOR(RAND()*100)%7=0 THEN 1 ELSE 0 END is_trending," +
+        " (1 + top_user_cat.cnt) * 1000 AS also_like " +
     " FROM    disco.recommendations rec " +
     " INNER JOIN (    SELECT  his.category, " +
-        " COUNT(id) " +
+        " COUNT(id) cnt" +
     " FROM    disco.user_history his " +
     " WHERE   his.user_id = ? " +
         " AND his.category IS NOT NULL " +
@@ -49,7 +50,7 @@ function get(data, callback) {
         " AND h.url = rec.url) " +
     " ORDER BY RAND(), " +
         " rank ASC " +
-    " LIMIT 15 "
+    " LIMIT 5 "
 
     connection.query(query, params, function (err, results, fields) {
         if (err) {
