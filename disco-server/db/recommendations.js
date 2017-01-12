@@ -54,7 +54,7 @@ function get(data, callback) {
     " ORDER BY RAND(), " +
         " is_trending," +
         " rank ASC " +
-    " LIMIT 5 "
+    " LIMIT 10 "
 
     connection.query(query, params, function (err, results, fields) {
         if (err) {
