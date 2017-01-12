@@ -26,5 +26,5 @@
     "taboola.png"
   ],
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
-  "homepage_url": "http://localhost:3005/"
+  "homepage_url": "http://172.25.8.114:3000/"
 }
