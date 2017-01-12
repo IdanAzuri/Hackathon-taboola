@@ -39,16 +39,21 @@ function getId(){
 }
 
 getId();
+function truncate(string){
+    if (string.length > 42)
+        return string.substring(0,40)+'...';
+    else
+        return string;
+};
 
 var trHTML = '';
 function renderRecs(recs) {
-
     $.each(recs.items, function (i, item) {
         if(item.askuser != undefined) {
             trHTML += '<tr id="question"><td><img id="thmbnl" name="male" src="src/img/male.jpeg"/>Help us help you<img id="thmbnl" name="female" src="src/img/female.png"/></td></tr>';
         }
         else {
-            trHTML += '<tr class="link"><td><img id="thmbnl" src="' + item.thumbnail_url + '"/><a href="' + item.url + '">' + (item.title==null?item.url:item.title.trim()) + '</a></td></tr>';
+            trHTML += '<tr class="link"><td><img id="thmbnl" src="' + item.thumbnail_url + '"/><a href="' + item.url + '">' + (item.title==null?item.url:truncate(item.title.trim())) + '</a><img align="right" class="favbutton" src="src/img/fav.jpeg"/></td></tr>';
         }
     });
 
@@ -67,7 +72,11 @@ function getItems() {
             if(xmlhttp.statusText == '') {
                 renderRecs(staticData);
             } else {
-                renderRecs(JSON.parse(xmlhttp.response));
+                jsonObj = JSON.parse(xmlhttp.response);
+                renderRecs(jsonObj);
+                if(jsonObj.question != undefined) {
+                   $('#question').append('<tr id="question"><td colspan="1"><img id="thmbnl" name="male" src="src/img/male.jpeg"/></td><td colspan="2" align="middle">Help us help you</td><td colspan="1" align="right"><img id="thmbnl" name="female" src="src/img/female.png"/></td></tr>');
+                }
             }
         }
     };
@@ -76,8 +85,20 @@ function getItems() {
 
 window.onload = function() {
     getItems();
+    $("#recList").on("click", "#favbutton", function (e) {
+        var title = this.children[1].children[2].innerHTML;
+        var url = homepageUrl + "disco/savefav";
+        var postObj = {params: {userId: USER_ID, title:title}};
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST", url);
+        xmlhttp.setRequestHeader("Content-Type", "application/json");
+        xmlhttp.send(JSON.stringify(postObj));
+        e.stopImmediatePropagation();
+    });
     $("#recList").on("click", ".link", function () {
-        chrome.tabs.create({ url: "http://" + this.children[1].children[0].href });
+        var link = this.children[1].children[0].href;
+        link = link.split('/')[3];
+        chrome.tabs.create({ url: "http://" + link });
     });
     $("#recList").on("click", "img[name*=male]", function () {
         var url = homepageUrl + "disco/post";
@@ -88,6 +109,7 @@ window.onload = function() {
         xmlhttp.send(JSON.stringify(postObj));
         $("#question").remove();
     });
+
 };
 
 $(window).scroll(function() {
