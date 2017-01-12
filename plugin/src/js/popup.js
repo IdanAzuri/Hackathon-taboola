@@ -125,7 +125,7 @@ window.onload = function () {
         e.stopImmediatePropagation();
     });
     $("#recList").on("click", ".link", function () {
-        var link = this.children[1].children[1].href;
+        var link = this.children[0].children[1].href;
         link = link.split('/')[3];
         chrome.tabs.create({url: "http://" + link});
     });
