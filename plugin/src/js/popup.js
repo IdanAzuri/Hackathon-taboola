@@ -53,13 +53,15 @@ function renderRecs(recs) {
             trHTML += '<tr id="question"><td><img id="thmbnl" name="male" src="src/img/male.jpeg"/>Help us help you<img id="thmbnl" name="female" src="src/img/female.png"/></td></tr>';
         }
         else {
-            trHTML += '<tr class="link"><td><img id="thmbnl" src="' + item.thumbnail_url + '"/><a href="' + item.url + '">' + (item.title==null?item.url:truncate(item.title.trim())) + '</a><img align="right" class="favbutton" src="src/img/fav.jpeg"/></td></tr>';
+            trHTML += '<tr class="link"><td><img id="thmbnl" src="' + item.thumbnail_url + '"/><a href="' + item.url + '">' + (item.title==null?item.url:truncate(item.title.trim())) + '</a></td><td><a href="favourites.html" id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></a></td></tr>';
         }
     });
 
     $('#recList').append(trHTML);
 }
-
+$('#favourite-toggle').click( function(){
+    $(this).find('i').toggleClass('glyphicon glyphicon-plus').toggleClass('glyphicon glyphicon-ok');
+});
 function getItems() {
     var url = homepageUrl + "disco/get";
     var postObj = {params: {userId: USER_ID}};
@@ -96,7 +98,7 @@ window.onload = function() {
         e.stopImmediatePropagation();
     });
     $("#recList").on("click", ".link", function () {
-        var link = this.children[1].children[0].href;
+        var link = this.children[1].children[1].href;
         link = link.split('/')[3];
         chrome.tabs.create({ url: "http://" + link });
     });
@@ -116,4 +118,9 @@ $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
         getItems()
     }
+});
+jQuery(document).ready(function(){
+    jQuery('#hideshow').live('click', function(event) {
+        jQuery('#content').toggle('show');
+    });
 });
