@@ -31,7 +31,7 @@ function get(data, callback) {
         " rec.url, " +
         " rec.thumbnail_url," +
         " CASE WHEN FLOOR(RAND()*100)%7=0 THEN 1 ELSE 0 END is_trending," +
-        " (1 + top_user_cat.cnt) * 1000 AS also_like " +
+        " (1 + top_user_cat.cnt) * (1 + FLOOR(RAND()*100)) * 100 AS also_like " +
     " FROM    disco.recommendations rec " +
     " INNER JOIN (    SELECT  his.category, " +
         " COUNT(id) cnt" +
@@ -41,7 +41,7 @@ function get(data, callback) {
     " AND his.category <> 'NOT_SUPPORTED' " +
     " GROUP BY category " +
     " ORDER BY COUNT(id) DESC " +
-    " LIMIT 2) AS top_user_cat " +
+    " LIMIT 3) AS top_user_cat " +
     " ON LOWER(top_user_cat.category) = LOWER(rec.category) " +
     " WHERE LENGTH(rec.title) > 1 AND LENGTH(rec.title) < 35 " +
     "   AND NOT EXISTS ( " +
