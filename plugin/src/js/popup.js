@@ -53,19 +53,20 @@ var trHTML = '';
 function renderRecs(recs) {
     $.each(recs.items, function (i, item) {
         var isTrending = item.is_trending
-        var alsoLiked = item.also_like + ' also like this'
+        var alsoLiked = item.also_like + ' also like this page'
 
         trHTML +=
             '<tr class="link" id="rowId">' +
                 '<td>' +
-                '<img id="thumbnailId" src="' + item.thumbnail_url + '"/>' +
+                '<img id="thumbnailId" src="' + item.thumbnail_url + '" style="width: 20px; height: 20px"/>' +
                 '<a href="' + item.url + '">' + (item.title == null ? item.url : truncate(item.title.trim())) + '</a>' +
-                '<br><small>' + alsoLiked + '</small>';
+            '<br style="height: 1px"><small>' + ''+ '</small>' +
+            '<br><small>' + alsoLiked + '</small>';
 
 
         if (isTrending == 1) {
             trHTML +=
-                    '<img id="thumbnailId" src="https://www.materialui.co/materialIcons/action/trending_up_white_192x192.png"/>' +
+                    '<img id="thumbnailId" src="https://www.materialui.co/materialIcons/action/trending_up_white_192x192.png" style="width: 15px; height: 25px; opacity: 05"/>' +
                     '</td>'+
                 '<td>' +
                     '<a href="favourites.html" id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></a>'+
@@ -124,7 +125,7 @@ window.onload = function () {
         xmlhttp.send(JSON.stringify(postObj));
     });
     $("#recList").on("click", ".link", function() {
-        var link = this.children[1].children[1].href;
+        var link = this.children[0].children[1].href;
         link = link.split('/')[3];
         chrome.tabs.create({url: "http://" + link});
     });
