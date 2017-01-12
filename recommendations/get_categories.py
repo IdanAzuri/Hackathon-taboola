@@ -55,7 +55,7 @@ def get_root_taxonomy(input_url):
     if len(response['taxonomy']) > 0:
         taxonomy = response['taxonomy'][0]['label']
         root_taxonomy = taxonomy.split('/')[1]
-    category = cat_mapping.get(root_taxonomy, root_taxonomy)
+        category = cat_mapping.get(root_taxonomy, root_taxonomy)
     return category
 
 
