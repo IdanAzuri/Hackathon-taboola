@@ -90,7 +90,6 @@ if __name__ == "__main__":
                     root_taxonomy = NOT_SUPPORTED
                 args = [root_taxonomy] + list(view)[1:5]
                 print(args)
-                print(url, root_taxonomy)
                 print(view)
                 cursor.execute(update_query, args)
     except Exception, msg:
