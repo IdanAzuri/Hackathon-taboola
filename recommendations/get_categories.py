@@ -2,6 +2,8 @@
 import mysql.connector
 import requests
 
+NOT_SUPPORTED = "NOT_SUPPORTED"
+
 cat_mapping = {"art and entertainment": "Arts And Entertainment",
                "automotive and vehicles": "Autos And Vehicles",
                "business and industrial": "Finance",
@@ -80,17 +82,27 @@ if __name__ == "__main__":
             views.append(view)
         for view in views:
             url = view[4]
-            print(url)
-            try:
-                root_taxonomy = get_root_taxonomy(url)
-                args = [root_taxonomy] + list(view)[1:5]
-                print(args)
-                print(url, root_taxonomy)
-                print(view)
-                cursor.execute(update_query, args)
+            category = view[6]
+            print(url, category)
+            if category is None:
+                try:
+                    root_taxonomy = get_root_taxonomy(url)
+                    args = [root_taxonomy] + list(view)[1:5]
+                    print(args)
+                    print(url, root_taxonomy)
+                    print(view)
+                    cursor.execute(update_query, args)
 
-            except Exception, msg:
-                print msg
+                except Exception, msg:
+                    args = [NOT_SUPPORTED] + list(view)[1:5]
+                    try:
+                        print(args)
+                        print(url, root_taxonomy)
+                        print(view)
+                        cursor.execute(update_query, args)
+                    except Exception, msg:
+                        print msg
+                    print msg
     except Exception, msg:
         print msg
     finally:
