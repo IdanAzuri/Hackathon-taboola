@@ -34,6 +34,7 @@ if __name__ == "__main__":
     insert_query = "INSERT INTO recommendations (category, rank, url, screenshot_url) " \
             "VALUES(%s,%s,%s,%s)"
 
+    print(os.listdir(CATEGORIES_RAWDATA_DIRECTORY))
     try:
         for category in os.listdir(CATEGORIES_RAWDATA_DIRECTORY):
             with open(os.path.join(CATEGORIES_RAWDATA_DIRECTORY, category), "r") as recs_file:
@@ -43,7 +44,10 @@ if __name__ == "__main__":
                     argsDict = {'url': url};
                     screenshot_url = urlbox(argsDict)
                     args = [category] + line.split() + [screenshot_url]
-                    cursor.execute(insert_query, args)
+                    try:
+                        cursor.execute(insert_query, args)
+                    except Exception, msg:
+                        print msg
                     print(args)
     except Exception, msg:
         print msg
