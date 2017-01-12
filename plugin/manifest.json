@@ -5,13 +5,13 @@
   "description": "You May Like",
   "version": "1.0",
   "icons": {
-    "128": "taboola.png"
+    "128": "Submarine.png"
   },
     "background": {
     "scripts": ["src/jquery/dist/jquery.js", "src/js/utilities.js", "initConfigs.js", "historyWorker.js"]
   },
   "browser_action": {
-    "default_icon": "taboola.png",
+    "default_icon": "Submarine.png",
     "default_popup": "popup.html"
   },
   "permissions": [
@@ -23,7 +23,7 @@
     "browsingData"
   ],
   "web_accessible_resources": [
-    "taboola.png"
+    "Submarine.png"
   ],
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
   "homepage_url": "http://172.25.8.114:3000/"
