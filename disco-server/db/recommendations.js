@@ -43,12 +43,14 @@ function get(data, callback) {
     " ORDER BY COUNT(id) DESC " +
     " LIMIT 2) AS top_user_cat " +
     " ON LOWER(top_user_cat.category) = LOWER(rec.category) " +
-    " WHERE NOT EXISTS ( " +
+    " WHERE LENGTH(rec.title) > 1 AND LENGTH(rec.title) < 35 " +
+    "   AND NOT EXISTS ( " +
         " SELECT  1 " +
     " FROM    user_history h " +
     " WHERE   h.user_id = ? " +
         " AND h.url = rec.url) " +
     " ORDER BY RAND(), " +
+        " is_trending," +
         " rank ASC " +
     " LIMIT 5 "
 
