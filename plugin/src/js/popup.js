@@ -12,10 +12,9 @@ function getId(){
 
 getId();
 
-
-
+var trHTML = ''
 function renderRecs(recs) {
-    var trHTML = '<tr><th colspan=2>You May Like</th></tr>';
+
     var jsonRecs = JSON.parse(recs);
     $.each(jsonRecs.items, function (i, item) {
         trHTML += '<tr><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a class="link" href="' + item.url + '">' + item.url + '</a></td></tr>';
@@ -28,7 +27,7 @@ function renderRecs(recs) {
     });
 }
 
-window.onload = function() {
+function getItems() {
     console.log("In event for recs...");
     console.log("user id is: " + USER_ID);
     var url = homepageUrl + "disco/get";
@@ -46,14 +45,13 @@ window.onload = function() {
     xmlhttp.send(JSON.stringify(postObj));
 }
 
+window.onload = function() {
+   getItems()
+}
+
 
 $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
         getItems()
     }
 });
-
-
-//window.onload = function() {
-//    getItems()
-//}
