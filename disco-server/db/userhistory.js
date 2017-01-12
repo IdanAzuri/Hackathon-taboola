@@ -19,6 +19,10 @@ function saveHistory(data) {
     var params = []
 
     var userId = data['userId']
+    if (userId.includes('"')) {
+        userId = data['userId'].substring(1, data['userId'].length-1);
+    }
+    logger.debug(userId)
     var urls = data['urls']
     for (var i = 0; i < dataLen; i++) {
         var userHistory = new UserHistory(userId, urls[i])
