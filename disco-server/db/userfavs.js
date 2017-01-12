@@ -21,7 +21,7 @@ function insert(data) {
 }
 
 function get(data, callback) {
-    var userId = data['userId'];
+    var userId = data['userId'].substring(1, data['userId'].length-1);
     var params = [userId];
 
     var query =
