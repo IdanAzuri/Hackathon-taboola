@@ -5,12 +5,12 @@ var connection = require('./db').Pool;
 var logger = require('../logger').logger;
 
 function insert(data) {
-    var userId = data['userId'];
+    var userId = data['userId'].substring(1, data['userId'].length-1);
     var title = data['title'];
     var params = [userId, title];
 
     var query =
-        " REPLACE INTO disco.user_favs (user_id, rec_id)" +
+        " REPLACE INTO disco.user_favs (user_id, title)" +
         " VALUES(?,?)";
 
     connection.query(query, params, function (err, results, fields) {
