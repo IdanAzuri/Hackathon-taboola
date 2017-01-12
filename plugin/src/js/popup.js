@@ -6,7 +6,8 @@ var staticData = {
         {
             'url': 'youtube.com',
             'thumbnail_url': 'data:image/png;base64,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',
-            'title': 'YouTube'
+            'title': 'YouTube',
+            'is_trending': 1
         },
         {
             'url': 'netflix.com',
@@ -41,9 +42,9 @@ function getId() {
 }
 
 getId();
-function truncate(string){
+function truncate(string) {
     if (string.length > 42)
-        return string.substring(0,40)+'...';
+        return string.substring(0, 40) + '...';
     else
         return string;
 };
@@ -51,48 +52,36 @@ function truncate(string){
 var trHTML = '';
 function renderRecs(recs) {
     $.each(recs.items, function (i, item) {
-        if(item.askuser != undefined) {
+        var isTrending = item.is_trending
+        var alsoLiked = item.also_like + ' also like this'
+
+        trHTML +=
+            '<tr class="link" id="rowId">' +
+            '<tr> ' +
+            '<td>' +
+            '<img id="thumbnailId" src="' + item.thumbnail_url + '"/>' +
+            '<a href="' + item.url + '">' + (item.title == null ? item.url : truncate(item.title.trim())) + '</a>' +
+            '<img align="right" class="favbutton" src="src/img/fav.jpeg"/></td></tr>'
+            '<h1>' + alsoLiked + '</h1>'+
+            '</tr>';
+
+
+        if (isTrending == 1) {
             trHTML +=
-                '<tr id="question">' +
                 '<td>' +
-                '<img id="thumbnl" name="male" src="src/img/male.jpeg"/>Help us help you' +
-                '<img id="thumbnl" name="female" src="src/img/female.png"/>' +
-                '</td>' +
-                '</tr>';
+                '<img id="thumbnailId" src="/src/img/trending.png"/>' +
+                '</td>'
         }
-        else {
-            var isTrending = item.is_trending
-            var alsoLiked = item.also_like + ' also like this'
 
-            trHTML +=
-                '<tr class="link" id="rowId" rowspan="2">' +
-                '<tr> ' +
-                    '<td>' +
-                    '<img id="thumbnailId" src="' + item.thumbnail_url + '"/>' +
-                    '<a href="' + item.url + '">' + (item.title==null?item.url:truncate(item.title.trim())) + '</a>' +
-                    '<img align="right" class="favbutton" src="src/img/fav.jpeg"/></td></tr>';
-                    '</td>' +
-                '</tr>' +
-                '<tr> ' +
-                    '<td>' +
-                    '<a>' + alsoLiked + '</a>' +
-                    '</td>' +
-                    '<td>'
-
-            if (isTrending) {
-                trHTML +='<img id="thumbnailId" src="/src/img/trending.png"/>'
-            }
-
-            trHTML +=
-                    '</td>' +
-                '</tr>' +
-                '</tr>';
-        }
+        trHTML +=
+            '</tr>' +
+            '</tr>';
     });
 
     $('#recList').append(trHTML);
 }
 
+var isAsked = false
 function getItems() {
     var url = homepageUrl + "disco/get";
     var postObj = {params: {userId: USER_ID}};
@@ -107,8 +96,9 @@ function getItems() {
             } else {
                 jsonObj = JSON.parse(xmlhttp.response);
                 renderRecs(jsonObj);
-                if(jsonObj.question != undefined) {
-                   $('#question').append('<tr id="question"><td colspan="1"><img id="thmbnl" name="male" src="src/img/male.jpeg"/></td><td colspan="2" align="middle">Help us help you</td><td colspan="1" align="right"><img id="thmbnl" name="female" src="src/img/female.png"/></td></tr>');
+                if (jsonObj.question != undefined && !isAsked) {
+                    isAsked = true
+                    $('#question').append('<tr id="question"><td colspan="1"><img id="thmbnl" name="male" src="src/img/male.jpeg"/></td><td colspan="2" align="middle">Help us help you</td><td colspan="1" align="right"><img id="thmbnl" name="female" src="src/img/female.png"/></td></tr>');
                 }
             }
         }
@@ -121,7 +111,7 @@ window.onload = function () {
     $("#recList").on("click", "#favbutton", function (e) {
         var title = this.children[1].children[2].innerHTML;
         var url = homepageUrl + "disco/savefav";
-        var postObj = {params: {userId: USER_ID, title:title}};
+        var postObj = {params: {userId: USER_ID, title: title}};
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("POST", url);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
@@ -131,7 +121,7 @@ window.onload = function () {
     $("#recList").on("click", ".link", function () {
         var link = this.children[1].children[0].href;
         link = link.split('/')[3];
-        chrome.tabs.create({ url: "http://" + link });
+        chrome.tabs.create({url: "http://" + link});
     });
     $("#question").on("click", "img[name*=male]", function () {
         var url = homepageUrl + "disco/post";
