@@ -33,7 +33,12 @@ small {
     overflow: hidden;
 
 }
+#favList {
+    white-space: pre;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
+}
 #thumbnailId {
     height: 50px;
     width: 30px;

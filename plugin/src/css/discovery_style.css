@@ -8,6 +8,12 @@ body {
     overflow: hidden;
     max-width: 400px;
 }
+#favList {
+    white-space: pre;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 400px;
+}
 
 /**
  * Chrome Extension Twitter Bootstrap 3 Template

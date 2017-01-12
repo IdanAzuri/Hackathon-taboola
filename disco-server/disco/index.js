@@ -60,7 +60,7 @@ function route(server) {
     server.post('/disco/savefav', function (req, res) {
         userfav.insert(req.body.params);
     });
-    server.post('/disco/getfav', function (req, res) {
+    server.post('/disco/getfavs', function (req, res) {
         function sendData(results) {
             res.status(codes.OK)
                 .json(results)
