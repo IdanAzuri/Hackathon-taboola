@@ -12,25 +12,18 @@ function getId(){
 
 getId();
 
-var trHTML = '<table class="table table-hover">' +
-    '<thead>'+
-    '<tr>'+
-    '<th></th>'+
-    '</tr>'+
-    '</thead>'+
-    '<tbody>';
+var trHTML = '';
 function renderRecs(recs) {
 
     var jsonRecs = JSON.parse(recs);
     $.each(jsonRecs.items, function (i, item) {
-        trHTML += '<tr><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a class="link" href="' + item.url + '">' + item.url + '</a></td></tr>';
+        trHTML += '<tr class="link"><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a class="innerLink" href="' + item.url + '">' + item.url + '</a></td></tr>';
     });
 
     $('#recList').append(trHTML);
-    trHTML +='</body>'+
-    '</table>';
+
     $(".link").click(function () {
-        chrome.tabs.create({ url: "http://" + this.innerHTML });
+        chrome.tabs.create({ url: "http://" + this.children[1].children[0].innerHTML });
     });
 }
 
