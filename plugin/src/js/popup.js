@@ -120,6 +120,7 @@ window.onload = function () {
     getItems();
     $('#recList').on("click", "#favourite-toggle", function() {
         $(this).toggleClass('glyphicon-pushpin');
+        $(this).removeAttr('id');
         var link = this.parentElement.parentElement.children[0].children[1].href;
         link = link.split('/')[3];
         var url = homepageUrl + "disco/savefav";
