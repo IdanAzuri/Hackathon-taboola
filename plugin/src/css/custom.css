@@ -34,6 +34,13 @@ a{ color: #EBE9E7;}
     margin-left: 7px;
 }
 
+.favbutton {
+    height: 30px;
+    width: 30px;
+    margin-right: 7px;
+    margin-left: 7px;
+}
+
 #recRow {
     height: 80px;
 }
