@@ -38,7 +38,7 @@ function get(data, callback) {
         if (err) {
             logger.error(err);
         }
-        callback(results);
+        callback({items: results});
     });
 }
 
