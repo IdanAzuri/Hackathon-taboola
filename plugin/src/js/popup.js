@@ -45,10 +45,10 @@ function renderRecs(recs) {
 
     $.each(recs.items, function (i, item) {
         if(item.askuser != undefined) {
-            trHTML += '<tr id="question"><td><img id="thmbnl" name="male" src="src/img/male.jpeg"/></td><td>Help us help you</td><td><img id="thmbnl" name="female" src="src/img/female.png"/></td></tr>';
+            trHTML += '<tr id="question"><td><img id="thmbnl" name="male" src="src/img/male.jpeg"/>Help us help you<img id="thmbnl" name="female" src="src/img/female.png"/></td></tr>';
         }
         else {
-            trHTML += '<tr class="link"><td><img id="thmbnl" src="' + item.thumbnail_url + '"/></td><td valign="middle"><a href="' + item.url + '">' + (item.title==null?item.url:item.title.trim()) + '</a></td></tr>';
+            trHTML += '<tr class="link"><td><img id="thmbnl" src="' + item.thumbnail_url + '"/><a href="' + item.url + '">' + (item.title==null?item.url:item.title.trim()) + '</a></td></tr>';
         }
     });
 
