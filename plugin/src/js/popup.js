@@ -57,7 +57,7 @@ function renderRecs(recs) {
 
         trHTML +=
             '<tr class="link" id="rowId">' +
-                '<td>' +
+                '<td class="newtab">' +
                 '<img id="thumbnailId" src="' + item.thumbnail_url + '" style="width: 20px; height: 20px"/>' +
                 '<a href="' + item.url + '">' + (item.title == null ? item.url : truncate(item.title.trim())) + '</a>' +
             '<br style="height: 1px"><small>' + ''+ '</small>' +
@@ -69,14 +69,14 @@ function renderRecs(recs) {
                     '<img id="thumbnailId" src="https://www.materialui.co/materialIcons/action/trending_up_white_192x192.png" style="width: 15px; height: 25px; opacity: 05"/>' +
                     '</td>'+
                 '<td>' +
-                    '<a href="favourites.html" id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></a>'+
+                    '<i id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></i>'+
                 '</td>' +
                 '</tr>'
         }
         else {
             trHTML +=
                 '</td>'+'<td>' +
-                '<a href="favourites.html" id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></a>'+
+                '<i id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></i>'+
                 '</td>' +
                 '</tr>'
         }
@@ -84,9 +84,9 @@ function renderRecs(recs) {
 
     $('#recList').append(trHTML);
 }
-// $('#favourite-toggle').click( function(){
-//     $(this).find('i').toggleClass('glyphicon glyphicon-plus').toggleClass('glyphicon glyphicon-ok');
-// });
+$('#favourite-toggle').click( function(){
+    $(this).find('i').toggleClass('glyphicon glyphicon-plus').toggleClass('glyphicon glyphicon-ok');
+});
 var isAsked = false
 
 function getItems() {
@@ -124,8 +124,8 @@ window.onload = function () {
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         xmlhttp.send(JSON.stringify(postObj));
     });
-    $("#recList").on("click", ".link", function() {
-        var link = this.children[0].children[1].href;
+    $("#recList").on("click", ".newtab", function() {
+        var link = this.children[1].href;
         link = link.split('/')[3];
         chrome.tabs.create({url: "http://" + link});
     });
