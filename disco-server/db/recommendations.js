@@ -1,6 +1,27 @@
 var logger = require('../logger').logger
 var connection = require('./db').Pool
 
+function getUrls(callback) {
+    var query = 'SELECT url from disco.recommendations'
+
+    connection.query(query, function (err, results, fields) {
+        if (err) {
+            logger.error(err)
+        }
+        callback(results)
+    });
+}
+function update(url, title) {
+    var params = [title, url]
+    var query = 'update disco.recommendations set title = ? where url = ?'
+
+    connection.query(query, params, function (err, results, fields) {
+        if (err) {
+            logger.error(err)
+        }
+    });
+}
+
 function get(data, callback) {
     var userId = data['userId']
     var params = [userId, userId]
@@ -38,5 +59,7 @@ function get(data, callback) {
 }
 
 module.exports = {
-    get: get
+    get: get,
+    getUrls: getUrls,
+    update: update
 }
