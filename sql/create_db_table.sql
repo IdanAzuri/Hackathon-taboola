@@ -11,6 +11,6 @@ CREATE TABLE user_data (user_id  VARCHAR(200), udata VARCHAR(200), primary key(u
 CREATE TABLE user_history (id bigint(20), user_id VARCHAR(200), url VARCHAR(200), page_url VARCHAR(200), visit_time datetime, category VARCHAR(200));
 CREATE TABLE user_favs (user_id VARCHAR(200), url VARCHAR(200) ,primary key(user_id,url));
 
-//select * from disco.recommendations;
-//delete from disco.recommendations
-
+/* select * from disco.recommendations;
+delete from disco.recommendations
+*/
