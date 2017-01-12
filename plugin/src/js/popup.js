@@ -86,7 +86,7 @@ window.onload = function() {
         xmlhttp.open("POST", url);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         xmlhttp.send(JSON.stringify(postObj));
-        $("#question").children.clear();
+        $("#question").remove();
     });
 };
 
