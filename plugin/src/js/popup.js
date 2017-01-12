@@ -84,9 +84,7 @@ function renderRecs(recs) {
 
     $('#recList').append(trHTML);
 }
-$('#favourite-toggle').click( function(){
-    $(this).find('i').toggleClass('glyphicon glyphicon-plus').toggleClass('glyphicon glyphicon-ok');
-});
+
 var isAsked = false
 
 function getItems() {
@@ -116,6 +114,7 @@ function getItems() {
 window.onload = function () {
     getItems();
     $('#recList').on("click", "#favourite-toggle", function() {
+        $(this).toggleClass('glyphicon-pushpin');
         var title = this.parentElement.parentElement.children[0].children[1].innerHTML;
         var url = homepageUrl + "disco/savefav";
         var postObj = {params: {userId: USER_ID, title: title}};

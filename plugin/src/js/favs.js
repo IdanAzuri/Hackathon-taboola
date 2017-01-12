@@ -28,9 +28,7 @@ function renderRecs(recs) {
             '<img id="thumbnailId" src="' + item.thumbnail_url + '" style="width: 20px; height: 20px"/>' +
             '<a href="' + item.url + '">' + (item.title == null ? item.url : truncate(item.title.trim())) + '</a>' +
 
-                '</td>'+'<td>' +
-                '<i id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></i>'+
-                '</td>' +
+                '</td>'+
                 '</tr>';
     });
 
