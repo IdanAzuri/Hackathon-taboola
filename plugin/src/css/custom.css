@@ -5,13 +5,14 @@
  */
 
 body {
-    font-family: "Helvetica", "Lucida Grande", Tahoma, sans-serif;
+    /*font-family: "Helvetica", "Lucida Grande", Tahoma, sans-serif;*/
     font-size: 120%;
     width: 220px;
-    background: darkgray;
+    background: #2D2726;
+    font-family: 'Open Sans'
 
 }
-a{ color: white;}
+a{ color: #EBE9E7;}
 #tit {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -81,6 +82,8 @@ section {
 .navbar {
     margin-bottom: 5px;
 }
-{
-
+h2 {
+    font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
