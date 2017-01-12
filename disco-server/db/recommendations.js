@@ -23,7 +23,10 @@ function update(url, title) {
 }
 
 function get(data, callback) {
-    var userId = data['userId']
+    userId = data['userId']
+    if (userId.includes('"')) {
+        userId = data['userId'].substring(1, data['userId'].length-1);
+    }
     var params = [userId, userId]
 
     var query =
@@ -41,10 +44,9 @@ function get(data, callback) {
     " AND his.category <> 'NOT_SUPPORTED' " +
     " GROUP BY category " +
     " ORDER BY COUNT(id) DESC " +
-    " LIMIT 3) AS top_user_cat " +
+    " LIMIT 2) AS top_user_cat " +
     " ON LOWER(top_user_cat.category) = LOWER(rec.category) " +
-    " WHERE LENGTH(rec.title) > 1 AND LENGTH(rec.title) < 35 " +
-    "   AND NOT EXISTS ( " +
+    " WHERE  NOT EXISTS ( " +
         " SELECT  1 " +
     " FROM    user_history h " +
     " WHERE   h.user_id = ? " +
@@ -58,6 +60,7 @@ function get(data, callback) {
         if (err) {
             logger.error(err)
         }
+        logger.debug(userId)
         logger.debug(results)
         callback({items: results}, data)
     });
