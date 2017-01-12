@@ -12,7 +12,13 @@ function getId(){
 
 getId();
 
-var trHTML = ''
+var trHTML = '<table class="table table-hover">' +
+    '<thead>'+
+    '<tr>'+
+    '<th></th>'+
+    '</tr>'+
+    '</thead>'+
+    '<tbody>';
 function renderRecs(recs) {
 
     var jsonRecs = JSON.parse(recs);
@@ -21,7 +27,8 @@ function renderRecs(recs) {
     });
 
     $('#recList').append(trHTML);
-
+    trHTML +='</body>'+
+    '</table>';
     $(".link").click(function () {
         chrome.tabs.create({ url: "http://" + this.innerHTML });
     });
