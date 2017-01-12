@@ -5,13 +5,16 @@
  */
 
 body {
-    /*font-family: "Helvetica", "Lucida Grande", Tahoma, sans-serif;*/
     font-size: 120%;
-    width: 220px;
+    min-height: 500px;
+    min-width: 500px;
+    max-height: 500px;
+    max-width: 500px;
+    background: #2D2726;
+    font-family: 'Open Sans', sans-serif;
     background: #2D2726;
     font-family: 'Open Sans', sans-serif;
     height: auto;
-
 }
 
 a {

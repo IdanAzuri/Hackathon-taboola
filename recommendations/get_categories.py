@@ -49,9 +49,9 @@ def alchemy_url_logic(input_url):
 def get_root_taxonomy(input_url):
     response = alchemy_url_logic(input_url)
     if response['status'] != 'OK':
+        print("Alchemy status not ok:")
         print(response)
-        raise Exception("Alchemy status not ok")
-
+        return None
     if len(response['taxonomy']) > 0:
         taxonomy = response['taxonomy'][0]['label']
         root_taxonomy = taxonomy.split('/')[1]
@@ -85,29 +85,15 @@ if __name__ == "__main__":
             category = view[6]
             print(url, category)
             if category is None:
-                try:
-                    root_taxonomy = get_root_taxonomy(url)
-                    args = [root_taxonomy] + list(view)[1:5]
-                    print(args)
-                    print(url, root_taxonomy)
-                    print(view)
-                    cursor.execute(update_query, args)
-
-                except Exception, msg:
-                    args = [NOT_SUPPORTED] + list(view)[1:5]
-                    try:
-                        print(args)
-                        print(url, root_taxonomy)
-                        print(view)
-                        cursor.execute(update_query, args)
-                    except Exception, msg:
-                        print msg
-                    finally:
-                        conn.commit()
-                    print msg
-                finally:
-                    conn.commit()
+                root_taxonomy = get_root_taxonomy(url)
+                if root_taxonomy is None:
+                    root_taxonomy = NOT_SUPPORTED
+                args = [root_taxonomy] + list(view)[1:5]
+                print(args)
+                print(view)
+                cursor.execute(update_query, args)
     except Exception, msg:
+        print("Problem with writing to DB")
         print msg
     finally:
         conn.commit()
