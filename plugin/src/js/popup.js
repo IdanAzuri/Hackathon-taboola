@@ -57,23 +57,27 @@ function renderRecs(recs) {
 
         trHTML +=
             '<tr class="link" id="rowId">' +
-            '<tr> ' +
-            '<td>' +
-            '<img id="thumbnailId" src="' + item.thumbnail_url + '"/>' +
-            '<a href="' + item.url + '">' + (item.title == null ? item.url : truncate(item.title.trim())) + '</a>' +
-            '<img align="right" class="favbutton" src="src/img/fav.jpeg"/></td></tr>'
-            '<h1>' + alsoLiked + '</h1>'+
-            '</tr>';
+                '<td>' +
+                '<img id="thumbnailId" src="' + item.thumbnail_url + '"/>' +
+                '<a href="' + item.url + '">' + (item.title == null ? item.url : truncate(item.title.trim())) + '</a>' +
+                '<br><small>' + alsoLiked + '</small>';
 
 
         if (isTrending == 1) {
             trHTML +=
+                    '<img id="thumbnailId" src="https://www.materialui.co/materialIcons/action/trending_up_white_192x192.png"/>' +
+                    '</td>'+
                 '<td>' +
-                '<img id="thumbnailId" src="/src/img/trending.png"/>' +
-                '</td>'
+                    '<a href="favourites.html" id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></a>'+
+                '</td>' +
+                '</tr>'
         }
         else {
-            trHTML += '<tr class="link"><td><img id="thmbnl" src="' + item.thumbnail_url + '"/><a href="' + item.url + '">' + (item.title==null?item.url:truncate(item.title.trim())) + '</a></td><td><a href="favourites.html" id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></a></td></tr>';
+            trHTML +=
+                '</td>'+'<td>' +
+                '<a href="favourites.html" id="favourite-toggle" class="glyphicon glyphicon-plus" style="color:floralwhite"></a>'+
+                '</td>' +
+                '</tr>'
         }
     });
 

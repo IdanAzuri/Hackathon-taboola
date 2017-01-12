@@ -11,10 +11,15 @@ body {
     background: #2D2726;
     font-family: 'Open Sans', sans-serif;
     height: auto;
-    
 
 }
-    a{ color: #EBE9E7;}
+
+a {
+    color: #EBE9E7;
+}
+small {
+    color: #5e5e5e;
+}
 #tit {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -35,6 +40,7 @@ body {
     margin-right: 7px;
     margin-left: 7px;
 }
+
 #rowId {
     height: 80px;
     width: 30px;
@@ -48,12 +54,14 @@ body {
     margin-right: 7px;
     margin-left: 7px;
 }
+
 #roww {
     height: 100px;
     width: 30px;
     margin-right: 7px;
     margin-left: 7px;
 }
+
 #thmbthmb {
     height: 30px;
     width: 30px;
@@ -84,25 +92,29 @@ section {
 .navbar {
     margin-bottom: 5px;
 }
+
 h2 {
     font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+table .table-hover {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-table .table-hover{
-    width:100%;
-    border-collapse:collapse;
+table .table-hover td {
+    padding: 40px;
+    border: 1px solid;
 }
-table .table-hover td{
-    padding:40px; border: 1px solid;
-}
+
 /* Define the default color for all the table rows */
-table .table-hover tr{
+table .table-hover tr {
     background: #a6aebc;
 }
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th, .table-hover tbody tr:hover a  {
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th, .table-hover tbody tr:hover a {
     background-color: #3c3c3c;
 
 }
