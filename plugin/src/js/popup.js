@@ -120,9 +120,10 @@ window.onload = function () {
     getItems();
     $('#recList').on("click", "#favourite-toggle", function() {
         $(this).toggleClass('glyphicon-pushpin');
-        var title = this.parentElement.parentElement.children[0].children[1].innerHTML;
+        var link = this.parentElement.parentElement.children[0].children[1].href;
+        link = link.split('/')[3];
         var url = homepageUrl + "disco/savefav";
-        var postObj = {params: {userId: USER_ID, title: title}};
+        var postObj = {params: {userId: USER_ID, url: link}};
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("POST", url);
         xmlhttp.setRequestHeader("Content-Type", "application/json");

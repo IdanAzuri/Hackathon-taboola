@@ -57,16 +57,7 @@ function getItems() {
 
 window.onload = function () {
     getItems();
-    $('#recList').on("click", "#favourite-toggle", function() {
-        var title = this.parentElement.parentElement.children[0].children[1].innerHTML;
-        var url = homepageUrl + "disco/savefav";
-        var postObj = {params: {userId: USER_ID, title: title}};
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", url);
-        xmlhttp.setRequestHeader("Content-Type", "application/json");
-        xmlhttp.send(JSON.stringify(postObj));
-    });
-    $("#recList").on("click", ".newtab", function() {
+    $("#favList").on("click", ".newtab", function() {
         var link = this.children[1].href;
         link = link.split('/')[3];
         chrome.tabs.create({url: "http://" + link});
