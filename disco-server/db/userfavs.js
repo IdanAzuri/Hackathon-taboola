@@ -6,11 +6,11 @@ var logger = require('../logger').logger;
 
 function insert(data) {
     var userId = data['userId'].substring(1, data['userId'].length-1);
-    var title = data['title'];
-    var params = [userId, title];
+    var url = data['url'];
+    var params = [userId, url];
 
     var query =
-        " REPLACE INTO disco.user_favs (user_id, title)" +
+        " REPLACE INTO disco.user_favs (user_id, url)" +
         " VALUES(?,?)";
 
     connection.query(query, params, function (err, results, fields) {
@@ -31,7 +31,7 @@ function get(data, callback) {
         "   rec.thumbnail_url" +
         " FROM disco.user_favs fav" +
         " INNER JOIN disco.recommendations rec" +
-        " ON rec.title = fav.title" +
+        " ON rec.url = fav.url" +
         " WHERE fav.user_id = ?";
 
     connection.query(query, params, function (err, results, fields) {
