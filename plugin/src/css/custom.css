@@ -9,7 +9,9 @@ body {
     font-size: 120%;
     width: 220px;
     background: #2D2726;
-    font-family: 'Open Sans'
+    font-family: 'Open Sans', sans-serif;
+    height: auto;
+    
 
 }
 a{ color: #EBE9E7;}
@@ -61,4 +63,21 @@ h2 {
     font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+}
+
+
+table .table-hover{
+    width:100%;
+    border-collapse:collapse;
+}
+table .table-hover td{
+    padding:40px; border: 1px solid;
+}
+/* Define the default color for all the table rows */
+table .table-hover tr{
+    background: #a6aebc;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #000;
+
 }
