@@ -27,7 +27,32 @@ a{ color: #EBE9E7;}
 
 }
 
+#thumbnailId {
+    height: 50px;
+    width: 30px;
+    margin-right: 7px;
+    margin-left: 7px;
+}
+#rowId {
+    height: 80px;
+    width: 30px;
+    margin-right: 7px;
+    margin-left: 7px;
+}
+
 #thmbnl {
+    height: 50px;
+    width: 30px;
+    margin-right: 7px;
+    margin-left: 7px;
+}
+#roww {
+    height: 100px;
+    width: 30px;
+    margin-right: 7px;
+    margin-left: 7px;
+}
+#thmbthmb {
     height: 30px;
     width: 30px;
     margin-right: 7px;
