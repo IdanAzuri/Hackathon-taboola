@@ -52,6 +52,9 @@ function route(server) {
         }
 
         getItems(req.body.params, sendData)
+    });
+    server.post('/disco/post', function (req, res) {
+        userdata.insert(req.body.params);
     })
 }
 

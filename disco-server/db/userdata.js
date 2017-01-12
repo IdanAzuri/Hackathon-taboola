@@ -23,9 +23,9 @@ function hasData(data, callback) {
     });
 }
 
-function insert(data, callback) {
+function insert(data) {
     var userId = data['userId'];
-    var userData = data['userData'];
+    var userData = data['userGender'];
     var params = [userData, userId];
 
     var query =
