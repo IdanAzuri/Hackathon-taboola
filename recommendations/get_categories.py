@@ -52,6 +52,7 @@ def get_root_taxonomy(input_url):
         print("Alchemy status not ok:")
         print(response)
         return None
+    category = None
     if len(response['taxonomy']) > 0:
         taxonomy = response['taxonomy'][0]['label']
         root_taxonomy = taxonomy.split('/')[1]
